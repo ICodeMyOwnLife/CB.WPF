@@ -1,0 +1,122 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CB.Wpf.Controls">
+
+    <Thickness x:Key="SmallMargin">1</Thickness>
+
+    <SolidColorBrush x:Key="BrushBar" Color="#FFDEDEDE" />
+
+    <SolidColorBrush x:Key="BrushArrow" Color="#606060" />
+
+    <Style x:Key="StyleArrow" TargetType="Path">
+        <Setter Property="Fill" Value="{StaticResource BrushArrow}" />
+        <Setter Property="Margin" Value="3,1,3,1" />
+        <Setter Property="Stretch" Value="Uniform" />
+    </Style>
+
+    <Path x:Key="ArrowTop" x:Shared="False"
+          Data="M 0,4 C0,4 0,6 0,6 0,6 3.5,2.5 3.5,2.5 3.5,2.5 7,6 7,6 7,6 7,4 7,4 7,4 3.5,0.5 3.5,0.5 3.5,0.5 0,4 0,4 z"
+          Style="{StaticResource StyleArrow}" />
+
+    <Path x:Key="ArrowBottom" x:Shared="False"
+          Data="M 0,2.5 C0,2.5 0,0.5 0,0.5 0,0.5 3.5,4 3.5,4 3.5,4 7,0.5 7,0.5 7,0.5 7,2.5 7,2.5 7,2.5 3.5,6 3.5,6 3.5,6 0,2.5 0,2.5 z"
+          Style="{StaticResource StyleArrow}" />
+
+    <Style x:Key="StyleUpDownButton" TargetType="RepeatButton">
+        <Setter Property="Focusable" Value="True" />
+    </Style>
+
+    <ControlTemplate x:Key="TemplateNumericControl" TargetType="local:NumericControl">
+        <Border x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ProgressBar x:Name="progressBar" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                             Background="Transparent"
+                             BorderBrush="{x:Null}"
+                             BorderThickness="0"
+                             Foreground="{TemplateBinding BarBrush}"
+                             LargeChange="{TemplateBinding LargeChange}"
+                             Margin="{StaticResource SmallMargin}"
+                             Maximum="{TemplateBinding Maximum}"
+                             Minimum="{TemplateBinding Minimum}"
+                             SmallChange="{TemplateBinding SmallChange}"
+                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                             Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value, Mode=TwoWay}" />
+
+                <TextBox x:Name="textBox" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Foreground="{TemplateBinding Foreground}"
+                         IsHitTestVisible="False"
+                         Margin="{StaticResource SmallMargin}"
+                         Text="{Binding ElementName=progressBar, Path=Value, Mode=TwoWay}"
+                         TextAlignment="Center"
+                         VerticalContentAlignment="Center" />
+
+                <RepeatButton x:Name="buttonUp" Grid.Row="0" Grid.Column="1"
+                              Background="{TemplateBinding BarBrush}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              Content="{StaticResource ArrowTop}"
+                              Margin="1,0,0,0.5"
+                              Style="{StaticResource StyleUpDownButton}" />
+
+                <RepeatButton x:Name="buttonDown" Grid.Row="1" Grid.Column="1"
+                              Background="{TemplateBinding BarBrush}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              Content="{StaticResource ArrowBottom}"
+                              Margin="1,0.5,0,0"
+                              Style="{StaticResource StyleUpDownButton}" />
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="NumericControlStyle" Value="None">
+                <Setter TargetName="textBox" Property="IsHitTestVisible" Value="True" />
+                <Setter TargetName="progressBar" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonUp" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonDown" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="NumericControlStyle" Value="Bar">
+                <Setter TargetName="buttonUp" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonDown" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="NumericControlStyle" Value="UpDownButton">
+                <Setter TargetName="progressBar" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="StyleNumericControl" TargetType="local:NumericControl">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BarBrush" Value="{StaticResource BrushBar}" />
+        <Setter Property="BorderBrush" Value="#FF939393" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="LargeChange" Value="1.0"></Setter>
+        <Setter Property="NumericControlStyle" Value="BarAndUpDownButton" />
+        <Setter Property="SmallChange" Value="1.0"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+    
+    <Style TargetType="local:NumericControl" BasedOn="{StaticResource StyleNumericControl}">
+        <Setter Property="Template" Value="{StaticResource TemplateNumericControl}" />
+    </Style>
+
+</ResourceDictionary>

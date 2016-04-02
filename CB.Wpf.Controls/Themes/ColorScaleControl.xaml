@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CB.Wpf.Controls"
+                    xmlns:xaml="http://wpf.cb.com/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/NumericControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="TemplateColorScaleControl" TargetType="local:ColorScaleControl">
+        <Border x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="{StaticResource SmallMargin}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="6" />
+                    </Grid.RowDefinitions>
+
+                    <ProgressBar x:Name="progressBar" Grid.Row="0"
+                                 Background="Transparent"
+                                 BorderBrush="{x:Null}"
+                                 BorderThickness="0"
+                                 Foreground="{TemplateBinding BarBrush}"
+                                 LargeChange="{TemplateBinding LargeChange}"
+                                 Maximum="{TemplateBinding Maximum}"
+                                 Minimum="{TemplateBinding Minimum}"
+                                 SmallChange="{TemplateBinding SmallChange}"
+                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                 Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value, Mode=TwoWay}" />
+
+                    <xaml:ColorScaleBarElement x:Name="colorScaleBarElement" Grid.Row="1"
+                                               ScaleBrush="{TemplateBinding ScaleBrush}"
+                                               ScaleColor="{TemplateBinding ScaleColor}"
+                                               ScaleComponent="{TemplateBinding ScaleComponent}" />
+
+                    <TextBox x:Name="textBox" Grid.Row="0"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Foreground="{TemplateBinding Foreground}"
+                             IsHitTestVisible="False"
+                             Padding="0"
+                             Text="{Binding ElementName=progressBar, Path=Value, Mode=TwoWay}"
+                             TextAlignment="Center"
+                             VerticalContentAlignment="Top"/>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <RepeatButton x:Name="buttonUp" Grid.Row="0"
+                                  Background="{TemplateBinding BarBrush}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  Content="{StaticResource ArrowTop}"
+                                  Margin="1,0,0,0.5"
+                                  Style="{StaticResource StyleUpDownButton}" />
+
+                    <RepeatButton x:Name="buttonDown" Grid.Row="1"
+                                  Background="{TemplateBinding BarBrush}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  Content="{StaticResource ArrowBottom}"
+                                  Margin="1,0.5,0,0"
+                                  Style="{StaticResource StyleUpDownButton}" />
+                </Grid>
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="NumericControlStyle" Value="None">
+                <Setter TargetName="textBox" Property="IsHitTestVisible" Value="True" />
+                <Setter TargetName="progressBar" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonUp" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonDown" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="NumericControlStyle" Value="Bar">
+                <Setter TargetName="buttonUp" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="buttonDown" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+
+            <Trigger Property="NumericControlStyle" Value="UpDownButton">
+                <Setter TargetName="progressBar" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="local:ColorScaleControl" BasedOn="{StaticResource StyleNumericControl}">
+        <Setter Property="Template" Value="{StaticResource TemplateColorScaleControl}" />
+    </Style>
+
+</ResourceDictionary>

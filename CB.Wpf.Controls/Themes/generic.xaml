@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/ColorPicker.xaml" />
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/ColorScaleControl.xaml" />
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/FlipControl.xaml" />
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/ListPopup.xaml" />
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/NumericControl.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

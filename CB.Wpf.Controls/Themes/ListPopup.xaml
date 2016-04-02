@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CB.Wpf.Controls">
+
+    <SolidColorBrush x:Key="Background" Color="#FFE5F0FD"></SolidColorBrush>
+    
+    <SolidColorBrush x:Key="BorderBrush" Color="MediumSpringGreen"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Foreground" Color="#FF083651"></SolidColorBrush>
+    
+    <Style TargetType="local:ListPopup">
+        <Setter Property="Background" Value="{StaticResource Background}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="FontSize" Value="11.5"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource Foreground}"></Setter>
+        <Setter Property="MaxHeight" Value="250" />
+        <Setter Property="MaxWidth" Value="250" />
+        <Setter Property="MinHeight" Value="50" />
+        <Setter Property="MinWidth" Value="150" />
+        <Setter Property="Placement" Value="Relative" />
+        <Setter Property="StaysOpen" Value="True" />
+    </Style>
+</ResourceDictionary>
