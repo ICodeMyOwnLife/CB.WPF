@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CB.Wpf.Controls">
 
-    <ControlTemplate x:Key="TemplatFlipControl" TargetType="local:FlipControl">
+    <ControlTemplate x:Key="TemplateFlipControl" TargetType="local:FlipControl">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -20,6 +20,6 @@
     </ControlTemplate>
 
     <Style TargetType="local:FlipControl">
-        <Setter Property="Template" Value="{StaticResource TemplatFlipControl}" />
+        <Setter Property="Template" Value="{StaticResource TemplateFlipControl}" />
     </Style>
 </ResourceDictionary>
