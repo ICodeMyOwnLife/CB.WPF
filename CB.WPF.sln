@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Wpf.Controls", "CB.Wpf.Controls\CB.Wpf.Controls.csproj", "{40DDC946-CD13-4734-990F-FBFF6914652E}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.AttachedProperties", "..\CB.Xaml\CB.Xaml.AttachedProperties\CB.Xaml.AttachedProperties.csproj", "{1CCB7F4E-228A-4A8E-A211-A032C9C8767B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.CB.Wpf.Controls.EnumListBox", "Test.CB.Wpf.Controls.EnumListBox\Test.CB.Wpf.Controls.EnumListBox.csproj", "{0D1044CA-3B87-49C6-AB2E-85906F084502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Dynamic.CompilerServices", "..\CB.Dynamic\CB.Dynamic.CompilerServices\CB.Dynamic.CompilerServices.csproj", "{E1091216-EFE2-4065-B66D-4F90346B5991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.Commands", "..\CB.Xaml\CB.Xaml.Commands\CB.Xaml.Commands.csproj", "{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +95,22 @@ Global
 		{0D1044CA-3B87-49C6-AB2E-85906F084502}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D1044CA-3B87-49C6-AB2E-85906F084502}.Release|x64.ActiveCfg = Release|Any CPU
 		{0D1044CA-3B87-49C6-AB2E-85906F084502}.Release|x64.Build.0 = Release|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Debug|x64.Build.0 = Debug|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1091216-EFE2-4065-B66D-4F90346B5991}.Release|x64.Build.0 = Release|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Debug|x64.Build.0 = Debug|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Release|x64.ActiveCfg = Release|Any CPU
+		{C5DC3209-4A92-4243-8188-ADBD4FA87FC3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
