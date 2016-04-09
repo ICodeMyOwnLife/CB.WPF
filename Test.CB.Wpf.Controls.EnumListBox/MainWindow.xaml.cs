@@ -37,7 +37,7 @@ namespace TestEnumListBox
                 Alphabet.C | Alphabet.E | Alphabet.G,
                 Alphabet.B | Alphabet.D | Alphabet.F | Alphabet.H
             };
-            enumListBox.SelectedValue = alphabets[_random.Next(alphabets.Length)];
+            enumListBoxControl.SelectedValue = alphabets[_random.Next(alphabets.Length)];
         }
         #endregion
     }

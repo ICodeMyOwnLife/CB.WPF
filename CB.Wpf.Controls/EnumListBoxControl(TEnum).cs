@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -7,44 +7,7 @@ using System.Windows.Controls;
 
 namespace CB.Wpf.Controls
 {
-    [TemplatePart(Name = LISTBOX, Type = typeof(ListBox))]
-    public abstract class EnumListBox: Control
-    {
-        #region Fields
-        private const string LISTBOX = "listBox";
-        protected ListBox _listBox;
-        #endregion
-
-
-        #region  Constructors & Destructor
-        static EnumListBox()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EnumListBox),
-                new FrameworkPropertyMetadata(typeof(EnumListBox)));
-        }
-        #endregion
-
-
-        #region Abstract
-        protected abstract void InitilizeListBox();
-        #endregion
-
-
-        #region Override
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            _listBox = GetTemplateChild(LISTBOX) as ListBox;
-            if (_listBox == null)
-            {
-                throw new Exception(LISTBOX);
-            }
-            InitilizeListBox();
-        }
-        #endregion
-    }
-
-    public class EnumListBox<TEnum>: EnumListBox where TEnum: struct, IComparable, IConvertible, IFormattable
+    public class EnumListBoxControl<TEnum>: EnumListBoxControlBase where TEnum: struct, IComparable, IConvertible, IFormattable
     {
         #region Fields
         private bool _listBoxSelectionChanged;
@@ -54,7 +17,7 @@ namespace CB.Wpf.Controls
 
 
         #region  Constructors & Destructor
-        static EnumListBox()
+        static EnumListBoxControl()
         {
             var enumType = typeof(TEnum);
             if (!enumType.IsEnum || !enumType.GetCustomAttributes<FlagsAttribute>().Any())
@@ -65,7 +28,7 @@ namespace CB.Wpf.Controls
 
         #region Dependency Properties
         public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register(
-            nameof(SelectedValue), typeof(TEnum), typeof(EnumListBox),
+            nameof(SelectedValue), typeof(TEnum), typeof(EnumListBoxControl<TEnum>),
             new PropertyMetadata(default(TEnum), OnSelectedValueChanged));
 
         public TEnum SelectedValue
@@ -104,7 +67,7 @@ namespace CB.Wpf.Controls
         #region Implementation
         private static void OnSelectedValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((EnumListBox<TEnum>)d).OnSelectedValueChanged((TEnum)e.OldValue, (TEnum)e.NewValue);
+            ((EnumListBoxControl<TEnum>)d).OnSelectedValueChanged((TEnum)e.OldValue, (TEnum)e.NewValue);
         }
 
         protected virtual void OnSelectedValueChanged(TEnum oldValue, TEnum newValue)

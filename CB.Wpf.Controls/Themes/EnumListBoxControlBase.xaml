@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:CB.Wpf.Controls">
     
-    <ControlTemplate x:Key="EnumListBoxTemplate" TargetType="local:EnumListBox">
+    <ControlTemplate x:Key="EnumListBoxTemplate" TargetType="local:EnumListBoxControlBase">
         <ListBox x:Name="listBox" SelectionMode="Multiple" />
     </ControlTemplate>
 
-    <Style TargetType="local:EnumListBox">
+    <Style TargetType="local:EnumListBoxControlBase">
         <Setter Property="Template" Value="{StaticResource EnumListBoxTemplate}" />
     </Style>
 </ResourceDictionary>

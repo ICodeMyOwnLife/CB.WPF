@@ -3,21 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Test.CB.Wpf.Controls.EnumListBox"
-        xmlns:testEnumListBox="clr-namespace:TestEnumListBox"
+        xmlns:a="clr-namespace:TestEnumListBox"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <testEnumListBox:AlphabetEnumListBox x:Name="enumListBox" Grid.Row="0"></testEnumListBox:AlphabetEnumListBox>
-        
-        <TextBox Grid.Row="1" Text="{Binding ElementName=enumListBox, Path=SelectedValue}"></TextBox>
-        
-        <Button Grid.Row="2" Content="Set" Click="ButtonBase_OnClick"></Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <a:AlphabetEnumListBoxControl x:Name="enumListBoxControl" Grid.Row="0" Grid.Column="0" />
+
+        <a:AlphabetEnumComboBoxControl x:Name="enumComboBoxControl" Grid.Row="0" Grid.Column="1"
+                                       SelectedValue="{Binding ElementName=enumListBoxControl, Path=SelectedValue}" />
+
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 Text="{Binding ElementName=enumListBoxControl, Path=SelectedValue}" />
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Set" Click="ButtonBase_OnClick" />
     </Grid>
 </Window>

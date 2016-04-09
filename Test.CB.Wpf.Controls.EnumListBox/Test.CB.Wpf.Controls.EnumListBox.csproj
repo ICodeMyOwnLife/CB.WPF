@@ -59,7 +59,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Alphabet.cs" />
-    <Compile Include="AlphabetEnumListBox.cs" />
+    <Compile Include="AlphabetEnumComboBoxControl.cs" />
+    <Compile Include="AlphabetEnumListBoxControl.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

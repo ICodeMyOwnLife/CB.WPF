@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -57,7 +58,11 @@
   <ItemGroup>
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorScaleControl.cs" />
-    <Compile Include="EnumListBox.cs" />
+    <Compile Include="EnumComboBoxControl%28TEnum%29.cs" />
+    <Compile Include="EnumComboBoxControlBase.cs" />
+    <Compile Include="EnumComboBox.cs" />
+    <Compile Include="EnumListBoxControl%28TEnum%29.cs" />
+    <Compile Include="EnumListBoxControlBase.cs" />
     <Compile Include="FlipControl.cs" />
     <Compile Include="FlipTextBlock.cs" />
     <Compile Include="Helpers\ScrollViewerHelper.cs" />
@@ -102,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\EnumListBox.xaml">
+    <Page Include="Themes\EnumComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\EnumComboBoxControlBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\EnumListBoxControlBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
