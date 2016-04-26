@@ -27,8 +27,8 @@
                         ContentStringFormat="Delete {0}"
                         Command="{Binding DeleteCommand}" />
 
-                <Button Grid.Column="1" Content="{Binding Path=Name}"
-                        ContentStringFormat="Load {0}s"
+                <Button Grid.Column="1" Content="{Binding Path=PluralName}"
+                        ContentStringFormat="Load {0}"
                         Command="{Binding LoadCommand}" />
 
                 <Button Grid.Column="2" Content="{Binding Name}"
