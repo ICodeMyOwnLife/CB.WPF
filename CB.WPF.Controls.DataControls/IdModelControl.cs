@@ -13,5 +13,18 @@ namespace CB.WPF.Controls.DataControls
                 new FrameworkPropertyMetadata(typeof(IdModelControl)));
         }
         #endregion
+
+
+        #region Dependency Properties
+        public static readonly DependencyProperty ButtonsProperty = DependencyProperty.Register(
+            nameof(Buttons), typeof(IdModelButtons), typeof(IdModelControl),
+            new PropertyMetadata(IdModelButtons.Delete | IdModelButtons.Load | IdModelButtons.Add | IdModelButtons.Save));
+
+        public IdModelButtons Buttons
+        {
+            get { return (IdModelButtons)GetValue(ButtonsProperty); }
+            set { SetValue(ButtonsProperty, value); }
+        }
+        #endregion
     }
 }

@@ -65,6 +65,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\IdModelButtons.cs" />
+    <Compile Include="Impl\IdModelButtonsToGridLengthConverter.cs" />
     <Compile Include="IdModelControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

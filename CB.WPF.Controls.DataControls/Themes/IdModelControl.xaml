@@ -6,6 +6,8 @@
                     xmlns:vmd="clr-namespace:CB.Model.Common;assembly=CB.Model.Common"
                     mc:Ignorable="d">
 
+    <local:IdModelButtonsToGridLengthConverter x:Key="GridLengthConverter" />
+
     <ControlTemplate x:Key="IdModelControlTemplate" TargetType="local:IdModelControl">
         <Grid x:Name="pnlMain" d:DataContext="{d:DesignInstance vmd:IdModelViewModel}">
             <Grid.RowDefinitions>
@@ -15,12 +17,18 @@
 
             <ContentPresenter Grid.Row="0" Content="{TemplateBinding Content}" />
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" x:Name="grid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition
+                        Width="{TemplateBinding Property=Buttons, Converter={StaticResource GridLengthConverter}, ConverterParameter={x:Static local:IdModelButtons.Delete}}" />
+                    <ColumnDefinition
+                        Width="{TemplateBinding Property=Buttons, Converter={StaticResource GridLengthConverter}, ConverterParameter={x:Static local:IdModelButtons.Load}}" />
+                    <ColumnDefinition
+                        Width="{TemplateBinding Property=Buttons, Converter={StaticResource GridLengthConverter}, ConverterParameter={x:Static local:IdModelButtons.Add}}" />
+                    <ColumnDefinition
+                        Width="{TemplateBinding Property=Buttons, Converter={StaticResource GridLengthConverter}, ConverterParameter={x:Static local:IdModelButtons.Copy}}" />
+                    <ColumnDefinition
+                        Width="{TemplateBinding Property=Buttons, Converter={StaticResource GridLengthConverter}, ConverterParameter={x:Static local:IdModelButtons.Save}}" />
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0" Content="{Binding Name}"
@@ -36,6 +44,10 @@
                         Command="{Binding AddNewItemCommand}" />
 
                 <Button Grid.Column="3" Content="{Binding Name}"
+                        ContentStringFormat="Copy {0}"
+                        Command="{Binding CopyCommand}" />
+
+                <Button Grid.Column="4" Content="{Binding Name}"
                         ContentStringFormat="Save {0}"
                         Command="{Binding SaveCommand}" />
             </Grid>
