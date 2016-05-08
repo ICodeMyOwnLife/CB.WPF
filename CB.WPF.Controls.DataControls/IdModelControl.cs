@@ -28,3 +28,6 @@ namespace CB.WPF.Controls.DataControls
         #endregion
     }
 }
+
+// TODO: Show/Hide Button use code-behind, disable button if hidden
+// TODO: Use Icon on Buttons

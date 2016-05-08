@@ -56,6 +56,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatedTabControl.cs" />
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorScaleControl.cs" />
     <Compile Include="EnumComboBoxControl%28TEnum%29.cs" />
@@ -99,6 +100,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\AnimatedTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
