@@ -3,11 +3,12 @@ using System.Windows.Input;
 using CB.Model.Common;
 using CB.Model.Prism;
 using Microsoft.Practices.Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 
 
 namespace CB.Wpf.UserControls
 {
-    public class FileTransferProgressViewModel: PrismViewModelBase
+    public class FileTransferProgressViewModel: PrismViewModelBase, IConfirmation
     {
         #region Fields
         private FileProgressState _state = FileProgressState.Running;
@@ -30,6 +31,8 @@ namespace CB.Wpf.UserControls
         public ICommand CancelCommand { get; }
         public bool CanPause => PauseAction != null && State == FileProgressState.Running;
         public bool CanResume => ResumeAction != null && State == FileProgressState.Pausing;
+        public bool Confirmed { get; set; }
+        public object Content { get; set; }
         public virtual Action PauseAction { get; set; }
         public ICommand PauseCommand { get; }
         public virtual FileProgressReporter ProgressReporter { get; set; }
@@ -47,6 +50,8 @@ namespace CB.Wpf.UserControls
                 }
             }
         }
+
+        public string Title { get; set; }
         #endregion
 
 
@@ -77,3 +82,6 @@ namespace CB.Wpf.UserControls
         #endregion
     }
 }
+
+
+// TODO: Xaml namespace: cb.xaml??

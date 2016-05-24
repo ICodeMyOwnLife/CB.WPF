@@ -14,6 +14,7 @@ namespace CB.Wpf.UserControls
                 FileSize = 1422478364,
                 BytesTransferred = 471264324
             };
+            ProgressReporter.Start();
         }
         #endregion
     }

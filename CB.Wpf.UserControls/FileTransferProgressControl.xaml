@@ -4,17 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CB.Wpf.UserControls"
-             mc:Ignorable="d" d:DesignWidth="410"
+             mc:Ignorable="d" Width="410"
              d:DataContext="{d:DesignInstance local:DesignFileTransferProgressViewModel}">
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="VisibilityConverter" />
 
-        <Thickness x:Key="NormalMargin">6</Thickness>
+        <Thickness x:Key="NormalMargin">8,0,8,8</Thickness>
+
+        <Thickness x:Key="NormalPadding">4</Thickness>
 
         <Style TargetType="Button">
             <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
             <Setter Property="MinWidth" Value="70" />
+            <Setter Property="Padding" Value="{StaticResource NormalPadding}" />
         </Style>
 
         <Style TargetType="ProgressBar">
@@ -23,6 +26,7 @@
 
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
+            <Setter Property="Padding" Value="{StaticResource NormalPadding}" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Resources>
@@ -61,7 +65,7 @@
 
             <TextBlock Grid.Column="0">
                 <Run Text="{Binding ProgressReporter.Transferred, Mode=OneWay}" />
-                <Run Text=" of " />
+                <Run Text="of" />
                 <Run Text="{Binding ProgressReporter.Capacity, Mode=OneWay}" />
             </TextBlock>
 
@@ -70,7 +74,7 @@
 
             <TextBlock Grid.Column="2"
                        HorizontalAlignment="Right"
-                       Text="{Binding ProgressReporter.RemainingTime, Mode=OneWay}" />
+                       Text="{Binding ProgressReporter.RemainingTime, Mode=OneWay, StringFormat={}{0:hh\\:mm\\:ss}}" />
         </Grid>
 
         <Grid Grid.Row="2">
@@ -83,7 +87,7 @@
 
             <TextBlock Grid.Column="0">
                 <Run Text="Elapsed time:" />
-                <Run Text="{Binding ProgressReporter.ElapsedTime, Mode=OneWay}" />
+                <Run Text="{Binding ProgressReporter.ElapsedTime, Mode=OneWay, StringFormat={}{0:hh\\:mm\\:ss}}" />
             </TextBlock>
 
             <Button Grid.Column="1" Content="Pause"
