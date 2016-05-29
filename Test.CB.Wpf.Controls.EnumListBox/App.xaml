@@ -1,7 +1,6 @@
-﻿<Application x:Class="Test.CB.Wpf.Controls.EnumListBox.App"
+﻿<Application x:Class="TestEnumListBox.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Test.CB.Wpf.Controls.EnumListBox"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

@@ -1,0 +1,17 @@
+﻿<Window x:Class="TestMahAppsResources.Views.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dvm="clr-namespace:TestMahAppsResources.DesignViewModels"
+        mc:Ignorable="d"
+        Title="TestWindow" Height="300" Width="300">
+
+    <Window.DataContext>
+        <dvm:DesignTestStylesViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <DataGrid ItemsSource="{Binding People}" />
+    </Grid>
+</Window>

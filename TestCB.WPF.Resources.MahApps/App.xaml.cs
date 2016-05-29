@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
 
-namespace TestEnumListBox
+namespace TestMahAppsResources
 {
     /// <summary>
     /// Interaction logic for App.xaml
