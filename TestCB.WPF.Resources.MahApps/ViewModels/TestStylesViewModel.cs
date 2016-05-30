@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CB.Model.Prism;
+using CB.Prism.Interactivity;
 using Microsoft.Practices.Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using TestMahAppsResources.Models;
 
 
@@ -17,6 +19,7 @@ namespace TestMahAppsResources.ViewModels
         private const string ADD_CMD = "Add Person";
         private const string DEL_CMD = "Delete Person";
         private const string SAVE_CMD = "Save Person";
+        private bool _canEdit;
         private ObservableCollection<Person> _people = new ObservableCollection<Person>();
         private double? _progress;
         protected readonly Random _random = new Random(DateTime.Now.Millisecond);
@@ -30,15 +33,17 @@ namespace TestMahAppsResources.ViewModels
         public TestStylesViewModel()
         {
             AddNewPersonCommand = new DelegateCommand(AddNewPerson);
-            DeleteAsynCommand = DelegateCommand.FromAsyncHandler(DeleteAsync, CanEdit);
+            BrowseAvatarCommand = new DelegateCommand(BrowseAvatar, () => CanEdit);
+            DeleteAsynCommand = DelegateCommand.FromAsyncHandler(DeleteAsync, () => CanEdit);
             DoAsyncCommand = DelegateCommand.FromAsyncHandler(DoAsync, CanDo);
-            SaveAsynCommand = DelegateCommand.FromAsyncHandler(SaveAsync, CanEdit);
+            SaveAsynCommand = DelegateCommand.FromAsyncHandler(SaveAsync, () => CanEdit);
         }
         #endregion
 
 
         #region  Commands
         public virtual ICommand AddNewPersonCommand { get; }
+        public ICommand BrowseAvatarCommand { get; }
         public virtual ICommand DeleteAsynCommand { get; }
         public virtual ICommand DoAsyncCommand { get; }
         public virtual ICommand SaveAsynCommand { get; }
@@ -46,7 +51,22 @@ namespace TestMahAppsResources.ViewModels
 
 
         #region  Properties & Indexers
+        public bool CanEdit
+        {
+            get { return _canEdit; }
+            protected set
+            {
+                if (SetProperty(ref _canEdit, value))
+                {
+                    RaiseCommandsCanExecuteChanged(SaveAsynCommand, DeleteAsynCommand, BrowseAvatarCommand, DoAsyncCommand);
+                }
+            }
+        }
+
         public IEnumerable<string> Commands { get; } = new[] { ADD_CMD, SAVE_CMD, DEL_CMD };
+
+        public ConfirmationInteractionRequest<IConfirmation> FileRequest { get; } =
+            new ConfirmationInteractionRequest<IConfirmation>();
 
         public ObservableCollection<Person> People
         {
@@ -69,13 +89,25 @@ namespace TestMahAppsResources.ViewModels
         public string SelectedCommand
         {
             get { return _selectedCommand; }
-            set { SetProperty(ref _selectedCommand, value); }
+            set
+            {
+                if (SetProperty(ref _selectedCommand, value))
+                {
+                    RaiseCommandsCanExecuteChanged(DoAsyncCommand);
+                }
+            }
         }
 
         public Person SelectedPerson
         {
             get { return _selectedPerson; }
-            set { SetProperty(ref _selectedPerson, value); }
+            set
+            {
+                if (SetProperty(ref _selectedPerson, value))
+                {
+                    CanEdit = SelectedPerson != null;
+                }
+            }
         }
 
         public ProgressState State
@@ -94,13 +126,22 @@ namespace TestMahAppsResources.ViewModels
             SelectedPerson = p;
         }
 
+        public void BrowseAvatar()
+        {
+            if (!CanEdit) return;
+
+            var openFileDialogInfo = new OpenFileDialogInfo();
+            FileRequest.Raise(openFileDialogInfo,
+                _ => { if (openFileDialogInfo.Confirmed) SelectedPerson.AvatarUrl = openFileDialogInfo.FileName; });
+        }
+
         public virtual async Task DeleteAsync()
         {
-            if (!CanEdit()) return;
+            if (!CanEdit) return;
 
             Progress = null;
             State = ProgressState.Running;
-            await Task.Delay(_random.Next(2500, 4500));
+            await Task.Delay(_random.Next(500, 4000));
             People.Remove(SelectedPerson);
             SelectedPerson = People.FirstOrDefault();
             State = ProgressState.Complete;
@@ -126,7 +167,7 @@ namespace TestMahAppsResources.ViewModels
 
         public virtual async Task SaveAsync()
         {
-            if (!CanEdit()) return;
+            if (!CanEdit) return;
 
             State = ProgressState.Running;
             Progress = 0;
@@ -150,13 +191,14 @@ namespace TestMahAppsResources.ViewModels
                     return true;
                 case SAVE_CMD:
                 case DEL_CMD:
-                    return CanEdit();
+                    return CanEdit;
                 default:
                     return false;
             }
         }
-
-        private bool CanEdit() => SelectedPerson != null;
         #endregion
     }
 }
+
+
+// TODO: Add Avatar

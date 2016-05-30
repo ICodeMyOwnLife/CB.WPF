@@ -7,6 +7,7 @@ namespace TestMahAppsResources.Models
     public class Person: BindableObject
     {
         #region Fields
+        private string _avatarUrl;
         private DateTime _dateOfBirth;
         private decimal _income;
         private int _intelligeceQuotient;
@@ -18,6 +19,12 @@ namespace TestMahAppsResources.Models
 
 
         #region  Properties & Indexers
+        public string AvatarUrl
+        {
+            get { return _avatarUrl; }
+            set { SetProperty(ref _avatarUrl, value); }
+        }
+
         public DateTime DateOfBirth
         {
             get { return _dateOfBirth; }

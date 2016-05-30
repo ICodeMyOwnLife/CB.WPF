@@ -4,15 +4,19 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                 xmlns:designViewModels="clr-namespace:TestMahAppsResources.DesignViewModels"
+                 xmlns:dvm="clr-namespace:TestMahAppsResources.DesignViewModels"
                  xmlns:xaml="http://wpf.cb.com/xaml"
                  xmlns:models="clr-namespace:TestMahAppsResources.Models"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:prm="http://prismlibrary.com/"
                  mc:Ignorable="d"
                  Title="Test Styles" Height="560" Width="840" FontSize="13"
                  Background="{StaticResource Background}" Style="{StaticResource MetroWindowStyle}">
 
     <Window.Resources>
+        <dvm:DesignTestStylesViewModel x:Key="MainViewModel" />
+
         <xaml:BooleanNotConverter x:Key="NotConverter" />
 
         <xaml:NullityConverter x:Key="NullToBooleanConverter">
@@ -38,8 +42,14 @@
     </Window.Resources>
 
     <Window.DataContext>
-        <designViewModels:DesignTestStylesViewModel />
+        <StaticResource ResourceKey="MainViewModel" />
     </Window.DataContext>
+
+    <i:Interaction.Triggers>
+        <prm:InteractionRequestTrigger SourceObject="{Binding FileRequest}">
+            <xaml:WindowTriggerAction CenterOverAssociatedObject="True" IsModal="True" />
+        </prm:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -70,8 +80,10 @@
                              Command="{Binding DoAsyncCommand}" />
         </Grid>
 
-        <Grid Grid.Row="2" DataContext="{Binding SelectedPerson}">
+        <Grid Grid.Row="2" DataContext="{Binding SelectedPerson}"
+              IsEnabled="{Binding Source={StaticResource MainViewModel}, Path=CanEdit}">
             <Grid.RowDefinitions>
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -138,6 +150,29 @@
                 <mah:NumericUpDown Grid.Column="1"
                                    Value="{Binding IntelligeceQuotient}" />
             </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="Avatar:"
+                           Style="{StaticResource TextBlockStyle.Label}" />
+
+                <mah:RevealImage Grid.Column="1" Height="60" Width="60" VerticalAlignment="Stretch"
+                                 Image="{Binding AvatarUrl}" />
+
+                <TextBlock Grid.Column="2" Style="{StaticResource TextBlockStyle.Label}"
+                           Text="{Binding AvatarUrl}" ToolTip="{Binding AvatarUrl}" />
+
+                <Button Grid.Column="3" Style="{StaticResource MetroFlatButtonStyle}"
+                        Background="{DynamicResource AccentColorBrush2}" Height="20" Width="20"
+                        Command="{Binding Source={StaticResource MainViewModel}, Path=BrowseAvatarCommand}"
+                        OpacityMask="{StaticResource BrowseBrush}" />
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -148,14 +183,15 @@
         </Grid>
 
         <ProgressBar x:Name="prgMain" Grid.Row="3"
-                              Value="{Binding Progress, Mode=OneWay}"
-                              Visibility="{Binding State, Converter={StaticResource ProgressStateToVisibilityConverter}}"
-                              IsIndeterminate="{Binding Progress, Mode=OneWay, Converter={StaticResource NullToBooleanConverter}}" />
+                     Value="{Binding Progress, Mode=OneWay}"
+                     Visibility="{Binding State, Converter={StaticResource ProgressStateToVisibilityConverter}}"
+                     IsIndeterminate="{Binding Progress, Mode=OneWay, Converter={StaticResource NullToBooleanConverter}}" />
 
         <mah:ProgressRing Grid.Row="0" Height="16"
                           Visibility="{Binding State, Converter={StaticResource ProgressStateToVisibilityConverter}}" />
 
+
         <!--For Debug Only-->
-        <!--<TextBlock Grid.Row="4" Text="{Binding ElementName=prgMain, Path=IsIndeterminate}" />-->
+        <!--<TextBlock Grid.Row="5" Text="{Binding ElementName=prgMain, Path=IsIndeterminate}" />-->
     </Grid>
 </mah:MetroWindow>
