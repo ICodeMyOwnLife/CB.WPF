@@ -17,6 +17,8 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.radiobutton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textblock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/themes/toggleswitch.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/baselight.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -83,12 +85,12 @@
 
     <Style TargetType="mah:DropDownButton" BasedOn="{StaticResource DropDownButtonStyle}" />
 
-    <Style x:Key="MetroFlatButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+    <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
+    <Style x:Key="MetroFlatButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
@@ -173,6 +175,12 @@
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}" />
 
     <Style x:Key="ToggleSwitchStyle" TargetType="mah:ToggleSwitch">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ToggleSwitchStyle.Win10" TargetType="mah:ToggleSwitch"
+           BasedOn="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>

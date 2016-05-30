@@ -108,3 +108,6 @@ namespace TestMahAppsResources.DesignViewModels
         #endregion
     }
 }
+
+
+// TODO: Copy images to solution
