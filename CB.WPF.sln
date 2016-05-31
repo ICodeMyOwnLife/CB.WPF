@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Wpf.Controls", "CB.Wpf.Controls\CB.Wpf.Controls.csproj", "{40DDC946-CD13-4734-990F-FBFF6914652E}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Prism.Interactivity", "..\CB.Prism\CB.Prism.Interactivity\CB.Prism.Interactivity.csproj", "{640C072B-F368-4D76-9969-9C6BFE4070D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCB.WPF.Controls", "TestCB.WPF.Controls\TestCB.WPF.Controls.csproj", "{F2CB9036-1B48-4763-B618-56B7D446E9B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.WPF.Test", "CB.WPF.Test\CB.WPF.Test.csproj", "{B1E46368-347B-4787-B663-2E1BDEDAD749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -181,6 +183,14 @@ Global
 		{F2CB9036-1B48-4763-B618-56B7D446E9B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2CB9036-1B48-4763-B618-56B7D446E9B1}.Release|x64.ActiveCfg = Release|Any CPU
 		{F2CB9036-1B48-4763-B618-56B7D446E9B1}.Release|x64.Build.0 = Release|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Debug|x64.Build.0 = Debug|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Release|x64.ActiveCfg = Release|Any CPU
+		{B1E46368-347B-4787-B663-2E1BDEDAD749}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
