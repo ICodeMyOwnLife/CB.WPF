@@ -8,7 +8,7 @@ using System.Windows.Shapes;
 
 namespace CB.WPF.Resources.MahApps
 {
-    public class MahAppsContentControlServices
+    public static class MahAppsContentControlServices
     {
         #region Dependency Properties
         public static readonly DependencyProperty IconProperty = DependencyProperty.RegisterAttached(
@@ -24,6 +24,27 @@ namespace CB.WPF.Resources.MahApps
         [AttachedPropertyBrowsableForType(typeof(ContentControl))]
         public static void SetIcon(DependencyObject d, MahAppsButtonIcon value)
             => d.SetValue(IconProperty, value);
+
+        public static readonly DependencyProperty IconVisualProperty = DependencyProperty.RegisterAttached(
+            "IconVisual", typeof(Visual), typeof(MahAppsContentControlServices), new PropertyMetadata(default(Visual), OnIconVisualChanged));
+
+        [Category("MahAppsContentControlServices")]
+        [AttachedPropertyBrowsableForType(typeof(ContentControl))]
+        public static void SetIconVisual(DependencyObject d, Visual value)
+            => d.SetValue(IconVisualProperty, value);
+
+        [Category("MahAppsContentControlServices")]
+        [AttachedPropertyBrowsableForType(typeof(ContentControl))]
+        public static Visual GetIconVisual(DependencyObject d)
+            => (Visual) d.GetValue(IconVisualProperty);
+
+        private static void OnIconVisualChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = d as ContentControl;
+            if (element == null) return;
+
+            
+        }
         #endregion
 
 

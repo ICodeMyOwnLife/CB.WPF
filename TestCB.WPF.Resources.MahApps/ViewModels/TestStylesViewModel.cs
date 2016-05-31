@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -130,7 +131,10 @@ namespace TestMahAppsResources.ViewModels
         {
             if (!CanEdit) return;
 
-            var openFileDialogInfo = new OpenFileDialogInfo();
+            var openFileDialogInfo = new OpenFileDialogInfo
+            {
+                InitialDirectory = Path.Combine(Environment.CurrentDirectory, "Images")
+            };
             FileRequest.Raise(openFileDialogInfo,
                 _ => { if (openFileDialogInfo.Confirmed) SelectedPerson.AvatarUrl = openFileDialogInfo.FileName; });
         }
@@ -201,4 +205,5 @@ namespace TestMahAppsResources.ViewModels
 }
 
 
-// TODO: Add Avatar
+// TODO: Image View Request
+// TODO: Refactor MahAppsContentControlServices

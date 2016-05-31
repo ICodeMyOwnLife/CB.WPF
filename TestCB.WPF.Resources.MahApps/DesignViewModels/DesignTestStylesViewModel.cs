@@ -21,7 +21,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = true,
                     Religion = Religion.Catholicism,
                     Income = 5649.5m,
-                    IntelligeceQuotient = 97
+                    IntelligeceQuotient = 97,
+                    AvatarUrl = @"\Images\1.png"
                 },
                 new Person
                 {
@@ -31,7 +32,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = false,
                     Religion = Religion.Anglicanism,
                     Income = 419.1m,
-                    IntelligeceQuotient = 112
+                    IntelligeceQuotient = 112,
+                    AvatarUrl = @"\Images\11.png"
                 },
                 new Person
                 {
@@ -41,7 +43,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = false,
                     Religion = Religion.Christianity,
                     Income = 2444.4m,
-                    IntelligeceQuotient = 108
+                    IntelligeceQuotient = 108,
+                    AvatarUrl = @"\Images\alien.png"
                 },
                 new Person
                 {
@@ -51,7 +54,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = true,
                     Religion = Religion.Agnosticism,
                     Income = 604.7m,
-                    IntelligeceQuotient = 81
+                    IntelligeceQuotient = 81,
+                    AvatarUrl = @"\Images\4.png"
                 },
                 new Person
                 {
@@ -61,7 +65,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = true,
                     Religion = Religion.Atheism,
                     Income = 1239.9m,
-                    IntelligeceQuotient = 84
+                    IntelligeceQuotient = 84,
+                    AvatarUrl = @"\Images\5.png"
                 },
                 new Person
                 {
@@ -71,7 +76,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = true,
                     Religion = Religion.Buddhism,
                     Income = 412.3m,
-                    IntelligeceQuotient = 77
+                    IntelligeceQuotient = 77,
+                    AvatarUrl = @"\Images\6.png"
                 },
                 new Person
                 {
@@ -81,7 +87,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = false,
                     Religion = Religion.Hinduism,
                     Income = 3742.1m,
-                    IntelligeceQuotient = 72
+                    IntelligeceQuotient = 72,
+                    AvatarUrl = @"\Images\7.png"
                 },
                 new Person
                 {
@@ -91,7 +98,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = false,
                     Religion = Religion.None,
                     Income = 711.7m,
-                    IntelligeceQuotient = 123
+                    IntelligeceQuotient = 123,
+                    AvatarUrl = @"\Images\8.png"
                 },
                 new Person
                 {
@@ -101,7 +109,8 @@ namespace TestMahAppsResources.DesignViewModels
                     IsMarried = true,
                     Religion = Religion.Buddhism,
                     Income = 396.7m,
-                    IntelligeceQuotient = 89
+                    IntelligeceQuotient = 89,
+                    AvatarUrl = @"\Images\9.png"
                 },
             });
         }

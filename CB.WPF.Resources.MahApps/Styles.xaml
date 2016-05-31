@@ -1,14 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps">
 
     <ResourceDictionary.MergedDictionaries>
         <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.buttons.xaml" />
+        <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.buttons.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.checkbox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.combobox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.datagrid.xaml" />
@@ -17,14 +18,15 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.radiobutton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textblock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textbox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/themes/toggleswitch.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />-->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/baselight.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <sys:Double x:Key="NormalControlSize">16</sys:Double>
 
     <sys:Double x:Key="SmallControlSize">8</sys:Double>
+
+    <sys:Double x:Key="IconButtonSize">20</sys:Double>
 
     <Thickness x:Key="NormalMargin">4</Thickness>
 
@@ -84,6 +86,27 @@
     </Style>
 
     <Style TargetType="mah:DropDownButton" BasedOn="{StaticResource DropDownButtonStyle}" />
+
+    <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+        <Setter Property="Background" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="Height" Value="{DynamicResource IconButtonSize}" />
+        <Setter Property="Width" Value="{DynamicResource IconButtonSize}" />
+        <Setter Property="OpacityMask">
+            <Setter.Value>
+                <VisualBrush Stretch="Fill"
+                    Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentBaseColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
     <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />

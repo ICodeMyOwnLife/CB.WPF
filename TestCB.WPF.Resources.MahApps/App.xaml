@@ -14,10 +14,10 @@
 
             <ImageBrush x:Key="Background" ImageSource="Images/10.jpg" Stretch="UniformToFill" />
 
-            <VisualBrush x:Key="BrowseBrush" Visual="{DynamicResource appbar_folder_open}" Stretch="Fill" />
+            <VisualBrush x:Key="BrowseBrush" Visual="{DynamicResource appbar_folder_open}" Stretch="Fill"  />
 
-            <Style TargetType="DataGrid" BasedOn="{StaticResource DataGridStyle}">
-                <Setter Property="IsReadOnly" Value="True" />
+            <Style x:Key="TextBlockStyle.Center" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
