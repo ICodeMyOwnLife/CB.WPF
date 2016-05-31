@@ -59,6 +59,7 @@
     <Compile Include="AnimatedTabControl.cs" />
     <Compile Include="ColorPicker.cs" />
     <Compile Include="ColorScaleControl.cs" />
+    <Compile Include="DialogContentControl.cs" />
     <Compile Include="EnumComboBoxControl%28TEnum%29.cs" />
     <Compile Include="EnumComboBoxControlBase.cs" />
     <Compile Include="EnumComboBox.cs" />
@@ -112,6 +113,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\DialogContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\EnumComboBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +158,10 @@
     <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
       <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
       <Name>CB.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.AttachedProperties\CB.Xaml.AttachedProperties.csproj">
+      <Project>{1ccb7f4e-228a-4a8e-a211-a032c9c8767b}</Project>
+      <Name>CB.Xaml.AttachedProperties</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.ValueConverters\CB.Xaml.ValueConverters.csproj">
       <Project>{3c46f9a4-7a8b-4588-872f-60b36e471fc5}</Project>

@@ -94,7 +94,7 @@
         <Setter Property="OpacityMask">
             <Setter.Value>
                 <VisualBrush Stretch="Fill"
-                    Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
+                             Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
             </Setter.Value>
         </Setter>
 
@@ -107,6 +107,12 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="ListBoxStyle" TargetType="ListBox" BasedOn="{StaticResource MetroListBox}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxStyle}" />
 
     <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
