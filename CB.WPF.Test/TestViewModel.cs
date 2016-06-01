@@ -25,6 +25,8 @@ namespace CB_WPF_Test
 
 
         #region  Properties & Indexers
+        public static NotificationRequestProvider NotificationProvider { get; } = new NotificationRequestProvider();
+
         public Assembly Assembly
         {
             get { return _assembly; }
@@ -50,7 +52,13 @@ namespace CB_WPF_Test
             => windowType != null && (windowType == typeof(Window) || windowType.IsSubclassOf(typeof(Window)));
 
         public static void ShowDialogWindow(Type windowType)
-            => CreateWindow(windowType)?.ShowDialog();
+        {
+            var window = CreateWindow(windowType);
+            if (window != null)
+            {
+                NotificationProvider.Notify("Dialog Result", window.ShowDialog());
+            }
+        }
 
         public static void ShowWindow(Type windowType)
             => CreateWindow(windowType)?.Show();

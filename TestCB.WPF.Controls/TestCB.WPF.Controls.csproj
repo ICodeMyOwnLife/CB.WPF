@@ -114,6 +114,10 @@
       <Project>{88845a0d-9b1f-4d1a-92d3-0c8d97e4d747}</Project>
       <Name>CB.WPF.Resources.MahApps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.Test\CB.WPF.Test.csproj">
+      <Project>{B1E46368-347B-4787-B663-2E1BDEDAD749}</Project>
+      <Name>CB.WPF.Test</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

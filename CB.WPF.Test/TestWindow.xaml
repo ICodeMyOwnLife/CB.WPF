@@ -6,6 +6,8 @@
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns:local="clr-namespace:CB_WPF_Test"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                 xmlns:prm="http://prismlibrary.com/"
                  mc:Ignorable="d"
                  Title="Test Window" Height="400" Width="800" d:DataContext="{d:DesignInstance local:TestViewModel}"
                  GlowBrush="{DynamicResource AccentColorBrush2}" TitleAlignment="Center">
@@ -67,6 +69,12 @@
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <prm:InteractionRequestTrigger SourceObject="{Binding NotificationProvider.Request}">
+            <prm:PopupWindowAction CenterOverAssociatedObject="True" IsModal="True" />
+        </prm:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Margin="{StaticResource NormalMargin}">
         <Grid.RowDefinitions>
