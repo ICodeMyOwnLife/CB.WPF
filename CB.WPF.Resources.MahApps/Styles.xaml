@@ -18,7 +18,8 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.radiobutton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textblock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textbox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />-->
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.slider.xaml" /> -->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/baselight.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -177,6 +178,15 @@
     </Style>
 
     <Style TargetType="mah:RevealImage" BasedOn="{StaticResource RevealImageStyle}" />
+
+    <Style x:Key="SliderStyle" TargetType="Slider" BasedOn="{StaticResource MetroSlider}">
+        <Setter Property="AutoToolTipPrecision" Value="2" />
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Slider" BasedOn="{StaticResource SliderStyle}" />
 
     <Style x:Key="SplitButtonStyle" TargetType="mah:SplitButton">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
