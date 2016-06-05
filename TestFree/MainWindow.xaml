@@ -1,0 +1,73 @@
+﻿<mah:MetroWindow x:Class="TestFree.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:mahApps="clr-namespace:CB.WPF.Resources.MahApps;assembly=CB.WPF.Resources.MahApps"
+                 mc:Ignorable="d"
+                 Title="MainWindow" Height="350" Width="525" Style="{StaticResource MetroWindowStyle}">
+    
+    <Window.Resources>
+        <Style x:Key="MahAppsThemeMenuIconStyle" TargetType="Ellipse">
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Width" Value="16" />
+        </Style>
+
+        <ControlTemplate x:Key="AccentMenuItemTemplate" TargetType="MenuItem">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance mahApps:Accent}">
+                <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
+                     Fill="{Binding AccentBrush}" Stroke="Black" />
+                <TextBlock Text="{Binding Name}" Style="{DynamicResource TextBlockStyle.Label}" />
+            </StackPanel>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="AppThemeMenuItemTemplate" TargetType="MenuItem">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance mahApps:AppTheme}">
+                <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
+                     Fill="{Binding Background}" Stroke="{Binding BorderBrush}" />
+                <TextBlock Text="{Binding Name}" Style="{DynamicResource TextBlockStyle.Label}" />
+            </StackPanel>
+        </ControlTemplate>
+
+        <Style x:Key="MahAppsThemeChildMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+            <Setter Property="Command" Value="{Binding (mahApps:MahAppsTheme.ApplyCommand)}" />
+        </Style>
+
+        <Style x:Key="AppThemeChildMenuItemStyle" TargetType="MenuItem"
+           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
+            <Setter Property="Template" Value="{StaticResource AppThemeMenuItemTemplate}" />
+        </Style>
+
+        <Style x:Key="AccentChildMenuItemStyle" TargetType="MenuItem"
+           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
+            <Setter Property="Template" Value="{StaticResource AccentMenuItemTemplate}" />
+        </Style>
+
+        <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+            <Setter Property="Header" Value="Theme" />
+            <Setter Property="ItemContainerStyle" Value="{StaticResource AppThemeChildMenuItemStyle}" />
+            <Setter Property="ItemsSource" Value="{x:Static mahApps:MahAppsThemeManager.AppsThemes}" />
+        </Style>
+
+        <Style x:Key="AccentMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+            <Setter Property="Header" Value="Accent" />
+            <Setter Property="ItemContainerStyle" Value="{StaticResource AccentChildMenuItemStyle}" />
+            <Setter Property="ItemsSource" Value="{x:Static mahApps:MahAppsThemeManager.Accents}" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+        </Menu>
+    </Grid>
+</mah:MetroWindow>

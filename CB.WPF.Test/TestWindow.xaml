@@ -10,30 +10,19 @@
                  xmlns:prm="http://prismlibrary.com/"
                  mc:Ignorable="d"
                  Title="Test Window" Height="400" Width="800" d:DataContext="{d:DesignInstance local:TestViewModel}"
-                 GlowBrush="{DynamicResource AccentColorBrush2}" TitleAlignment="Center">
+                 TitleAlignment="Center" TitleCharacterCasing="Normal" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
                 <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/styles/accents/basedark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/taupe.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
             <Thickness x:Key="NormalMargin">12</Thickness>
-
-            <Style TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
-                <Setter Property="Padding" Value="8,4,8,4" />
-            </Style>
-
+            
             <Style TargetType="DataGrid" BasedOn="{StaticResource AzureDataGrid}">
-                <Setter Property="AlternatingRowBackground" Value="{DynamicResource AccentColorBrush4}" />
-                <Setter Property="Background" Value="{x:Null}" />
-                <Setter Property="GridLinesVisibility" Value="None" />
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
             </Style>
 
@@ -42,12 +31,10 @@
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
 
-            <Style x:Key="TextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
+            <Style TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
-
-            <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
 
             <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />

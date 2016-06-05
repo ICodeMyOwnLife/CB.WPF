@@ -39,6 +39,18 @@
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA155\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -67,8 +79,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DesignViewModels\TestProgressButtonDesignViewModel.cs" />
+    <Compile Include="ViewModels\ProgressTaskViewModel.cs" />
+    <Compile Include="ViewModels\TestProgressButtonViewModel.cs" />
     <Compile Include="Views\TestDialogContentControlWindow.xaml.cs">
       <DependentUpon>TestDialogContentControlWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestProgressButton.xaml.cs">
+      <DependentUpon>TestProgressButton.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -104,8 +122,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TestProgressButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
+      <Project>{33A5DF99-1312-4023-A6EF-EABB9848F5A6}</Project>
+      <Name>CB.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj">
+      <Project>{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}</Project>
+      <Name>CB.Model.Prism</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
@@ -118,6 +148,9 @@
       <Project>{B1E46368-347B-4787-B663-2E1BDEDAD749}</Project>
       <Name>CB.WPF.Test</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

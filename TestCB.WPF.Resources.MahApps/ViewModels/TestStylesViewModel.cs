@@ -10,6 +10,7 @@ using CB.Prism.Interactivity;
 using Microsoft.Practices.Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using TestMahAppsResources.Models;
+using ProgressState = TestMahAppsResources.Models.ProgressState;
 
 
 namespace TestMahAppsResources.ViewModels
@@ -20,10 +21,12 @@ namespace TestMahAppsResources.ViewModels
         private const string ADD_CMD = "Add Person";
         private const string DEL_CMD = "Delete Person";
         private const string SAVE_CMD = "Save Person";
+        private readonly string _backgroundFolder = Path.GetFullPath(@"Images\Background");
         private bool _canEdit;
         private ObservableCollection<Person> _people = new ObservableCollection<Person>();
         private double? _progress;
         protected readonly Random _random = new Random(DateTime.Now.Millisecond);
+        private string _selectedBackground;
         private string _selectedCommand = ADD_CMD;
         private Person _selectedPerson;
         private ProgressState _state = ProgressState.Pending;
@@ -38,6 +41,10 @@ namespace TestMahAppsResources.ViewModels
             DeleteAsynCommand = DelegateCommand.FromAsyncHandler(DeleteAsync, () => CanEdit);
             DoAsyncCommand = DelegateCommand.FromAsyncHandler(DoAsync, CanDo);
             SaveAsynCommand = DelegateCommand.FromAsyncHandler(SaveAsync, () => CanEdit);
+            SelectBackgroundCommand = new DelegateCommand<string>(SelectBackground);
+
+            BackgroundFiles = new[] { "" }.Concat(Directory.EnumerateFiles(_backgroundFolder));
+            SelectedBackground = BackgroundFiles.FirstOrDefault();
         }
         #endregion
 
@@ -48,10 +55,14 @@ namespace TestMahAppsResources.ViewModels
         public virtual ICommand DeleteAsynCommand { get; }
         public virtual ICommand DoAsyncCommand { get; }
         public virtual ICommand SaveAsynCommand { get; }
+
+        public ICommand SelectBackgroundCommand { get; }
         #endregion
 
 
         #region  Properties & Indexers
+        public IEnumerable<string> BackgroundFiles { get; }
+
         public bool CanEdit
         {
             get { return _canEdit; }
@@ -59,7 +70,8 @@ namespace TestMahAppsResources.ViewModels
             {
                 if (SetProperty(ref _canEdit, value))
                 {
-                    RaiseCommandsCanExecuteChanged(SaveAsynCommand, DeleteAsynCommand, BrowseAvatarCommand, DoAsyncCommand);
+                    RaiseCommandsCanExecuteChanged(SaveAsynCommand, DeleteAsynCommand, BrowseAvatarCommand,
+                        DoAsyncCommand);
                 }
             }
         }
@@ -85,6 +97,12 @@ namespace TestMahAppsResources.ViewModels
         {
             get { return _progress; }
             private set { SetProperty(ref _progress, value); }
+        }
+
+        public string SelectedBackground
+        {
+            get { return _selectedBackground; }
+            private set { SetProperty(ref _selectedBackground, value); }
         }
 
         public string SelectedCommand
@@ -183,6 +201,9 @@ namespace TestMahAppsResources.ViewModels
             }
             State = ProgressState.Complete;
         }
+
+        public void SelectBackground(string backgroundFile)
+            => SelectedBackground = backgroundFile;
         #endregion
 
 
@@ -206,4 +227,5 @@ namespace TestMahAppsResources.ViewModels
 
 
 // TODO: Image View Request
-// TODO: Refactor MahAppsContentControlServices
+// TODO: Add more properties to Person class
+// TODO: Save Accent, Theme, Background Settings

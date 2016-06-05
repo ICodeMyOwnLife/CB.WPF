@@ -2,27 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps">
+                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps"
+                    xmlns:xaml="http://wpf.cb.com/xaml">
 
+    <!--#region Embeded Resources-->
     <ResourceDictionary.MergedDictionaries>
-        <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
-        <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.buttons.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.checkbox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.combobox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.datagrid.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.datepicker.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.progressbar.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.radiobutton.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textblock.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textbox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.toggleswitch.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.slider.xaml" /> -->
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/baselight.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/flatslider.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
+    <!--#endregion-->
 
+
+    <!--#region Declaration-->
     <sys:Double x:Key="NormalControlSize">16</sys:Double>
 
     <sys:Double x:Key="SmallControlSize">8</sys:Double>
@@ -31,27 +25,32 @@
 
     <Thickness x:Key="NormalMargin">4</Thickness>
 
-    <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
+    
+    <!--#endregion-->
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
 
+
+    <!--#region CheckBox Style-->
     <Style x:Key="CheckBoxStyle" TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxStyle}" />
+    <!--#endregion-->
 
+
+    <!--#region ComboBox Style-->
     <Style x:Key="ComboBoxStyle" TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="ComboBox" BasedOn="{StaticResource ComboBoxStyle}" />
+    <!--#endregion-->
 
+
+    <!--#region DataGrid Style-->
     <Style x:Key="DataGridCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource AzureDataGridCell}">
         <Setter Property="Background" Value="{x:Null}" />
     </Style>
@@ -73,80 +72,39 @@
     </Style>
 
     <Style TargetType="DataGrid" BasedOn="{StaticResource DataGridStyle}" />
+    <!--#endregion-->
 
+
+    <!--#region DatePicker Style-->
     <Style x:Key="DatePickerStyle" TargetType="DatePicker" BasedOn="{StaticResource MetroDatePicker}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="DatePicker" BasedOn="{StaticResource DatePickerStyle}" />
+    <!--#endregion-->
 
-    <Style x:Key="DropDownButtonStyle" TargetType="mah:DropDownButton">
+
+    <!--#region Image Style-->
+    <Style x:Key="RevealImageStyle" TargetType="mah:RevealImage">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style TargetType="mah:DropDownButton" BasedOn="{StaticResource DropDownButtonStyle}" />
+    <Style TargetType="mah:RevealImage" BasedOn="{StaticResource RevealImageStyle}" />
+    <!--#endregion-->
 
-    <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
-        <Setter Property="Background" Value="{DynamicResource AccentColorBrush2}" />
-        <Setter Property="Height" Value="{DynamicResource IconButtonSize}" />
-        <Setter Property="Width" Value="{DynamicResource IconButtonSize}" />
-        <Setter Property="OpacityMask">
-            <Setter.Value>
-                <VisualBrush Stretch="Fill"
-                             Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
-            </Setter.Value>
-        </Setter>
 
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource AccentBaseColorBrush}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
+    <!--#region ListBox Style-->
     <Style x:Key="ListBoxStyle" TargetType="ListBox" BasedOn="{StaticResource MetroListBox}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
 
     <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxStyle}" />
+    <!--#endregion-->
 
-    <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
 
-    <Style x:Key="MetroFlatButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style x:Key="MetroProgressBarStyle" TargetType="mah:MetroProgressBar">
-        <Setter Property="Height" Value="{DynamicResource SmallControlSize}" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="Minimum" Value="0" />
-        <Setter Property="Maximum" Value="1" />
-        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat=P}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style TargetType="mah:MetroProgressBar" BasedOn="{StaticResource MetroProgressBarStyle}" />
-
-    <Style x:Key="MetroWindowStyle" TargetType="mah:MetroWindow">
-        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush2}" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="TitleAlignment" Value="Center" />
-        <Setter Property="TitleCaps" Value="False" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="WindowTransitionsEnabled" Value="True" />
-    </Style>
-
-    <Style TargetType="mah:MetroWindow" BasedOn="{StaticResource MetroWindowStyle}" />
-
+    <!--#region NumericUpDown Style-->
     <Style x:Key="NumericUpDownStyle" TargetType="mah:NumericUpDown">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="Height" Value="{DynamicResource NormalControlSize}" />
@@ -155,7 +113,10 @@
     </Style>
 
     <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource NumericUpDownStyle}" />
+    <!--#endregion-->
 
+
+    <!--#region ProgressBar Style-->
     <Style x:Key="ProgressBarStyle" TargetType="ProgressBar" BasedOn="{StaticResource MetroProgressBar}">
         <Setter Property="Height" Value="{DynamicResource SmallControlSize}" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
@@ -167,36 +128,77 @@
 
     <Style TargetType="ProgressBar" BasedOn="{StaticResource ProgressBarStyle}" />
 
+    <Style x:Key="MetroProgressBarStyle" TargetType="mah:MetroProgressBar">
+        <Setter Property="Height" Value="{DynamicResource SmallControlSize}" />
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="1" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat=P}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="mah:MetroProgressBar" BasedOn="{StaticResource MetroProgressBarStyle}" />
+    <!--#endregion-->
+
+
+    <!--#region RadioButton Style-->
     <Style x:Key="RadioButtonStyle" TargetType="RadioButton" BasedOn="{StaticResource MetroRadioButton}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonStyle}" />
+    <!--#endregion-->
 
-    <Style x:Key="RevealImageStyle" TargetType="mah:RevealImage">
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
 
-    <Style TargetType="mah:RevealImage" BasedOn="{StaticResource RevealImageStyle}" />
-
+    <!--#region Slider Style-->
     <Style x:Key="SliderStyle" TargetType="Slider" BasedOn="{StaticResource MetroSlider}">
         <Setter Property="AutoToolTipPlacement" Value="TopLeft" />
         <Setter Property="AutoToolTipPrecision" Value="2" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="Auto" />
     </Style>
 
     <Style TargetType="Slider" BasedOn="{StaticResource SliderStyle}" />
 
-    <Style x:Key="SplitButtonStyle" TargetType="mah:SplitButton">
+    <Style x:Key="FlatSliderStyle" TargetType="Slider" BasedOn="{StaticResource FlatSlider}">
+        <Setter Property="AutoToolTipPlacement" Value="TopLeft" />
+        <Setter Property="AutoToolTipPrecision" Value="2" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource SliderTrackDisabled}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SliderThumbDisabled}" />
+                <Setter Property="Foreground" Value="{DynamicResource SliderValueDisabled}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource SliderTrackHover}" />
+                <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush2}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Height" Value="12" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="MinHeight" Value="12" />
+                <Setter Property="Template" Value="{StaticResource HorizontalSlider}" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Width" Value="Auto" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Height" Value="Auto" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="MinWidth" Value="12" />
+                <Setter Property="Template" Value="{StaticResource VerticalSlider}" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="Width" Value="12" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    <!--#endregion-->
 
-    <Style TargetType="mah:SplitButton" BasedOn="{StaticResource SplitButtonStyle}" />
 
+    <!--#region TextBlock Style-->
     <Style x:Key="TextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
@@ -207,14 +209,20 @@
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
+    <!--#endregion-->
 
+
+    <!--#region TextBox Style-->
     <Style x:Key="TextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}" />
+    <!--#endregion-->
 
+
+    <!--#region ToggleSwitch Style-->
     <Style x:Key="ToggleSwitchStyle" TargetType="mah:ToggleSwitch">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -227,4 +235,19 @@
     </Style>
 
     <Style TargetType="mah:ToggleSwitch" BasedOn="{StaticResource ToggleSwitchStyle}" />
+    <!--#endregion-->
+
+
+    <!--#region Window Style-->
+    <Style x:Key="MetroWindowStyle" TargetType="mah:MetroWindow">
+        <!--<Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush2}" />-->
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TitleAlignment" Value="Center" />
+        <Setter Property="TitleCaps" Value="False" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="WindowTransitionsEnabled" Value="True" />
+    </Style>
+
+    <Style TargetType="mah:MetroWindow" BasedOn="{StaticResource MetroWindowStyle}" />
+    <!--#endregion-->
 </ResourceDictionary>

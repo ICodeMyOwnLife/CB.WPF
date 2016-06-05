@@ -5,18 +5,41 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:xaml="http://wpf.cb.com/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:mahApps="clr-namespace:CB.WPF.Resources.MahApps;assembly=CB.WPF.Resources.MahApps"
                       mc:Ignorable="d"
-                      Title="Test DialogContentControl" SizeToContent="WidthAndHeight"
-                      Style="{StaticResource MetroWindowStyle}">
+                      Title="Test DialogContentControl" SizeToContent="WidthAndHeight">
 
     <Window.Resources>
-        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+        <Style TargetType="Button">
             <Setter Property="MinWidth" Value="90" />
         </Style>
     </Window.Resources>
 
     <Grid>
-        <xaml:DialogContentControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Menu Grid.Row="0">
+            <MenuItem Header="Theme"
+                      ItemsSource="{x:Static mahApps:MahAppsThemeManager.AppsThemes}">
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Command" Value="{Binding (mahApps:MahAppsTheme.ApplyCommand)}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="MenuItem">
+                                    <TextBlock Text="{Binding (mahApps:MahAppsTheme.Name)}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+            </MenuItem>
+        </Menu>
+        
+        <xaml:DialogContentControl Grid.Row="1">
             <Rectangle Width="360" Height="120" Fill="BlanchedAlmond" />
         </xaml:DialogContentControl>
     </Grid>

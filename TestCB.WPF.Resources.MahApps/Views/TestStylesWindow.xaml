@@ -12,8 +12,8 @@
                  xmlns:prm="http://prismlibrary.com/"
                  xmlns:res="clr-namespace:CB.WPF.Resources.MahApps;assembly=CB.WPF.Resources.MahApps"
                  mc:Ignorable="d"
-                 Title="Test Styles" Height="560" Width="840" FontSize="13"
-                 Background="{StaticResource Background}" Style="{StaticResource MetroWindowStyle}">
+                 Title="Test Styles" Height="640" Width="960" FontSize="13" WindowState="Maximized"
+                 WindowStartupLocation="CenterOwner" Style="{StaticResource MetroWindowStyle}">
 
     <Window.Resources>
         <dvm:DesignTestStylesViewModel x:Key="MainViewModel" />
@@ -82,11 +82,59 @@
         <DataTemplate x:Key="IncomeColumn" DataType="models:Person">
             <TextBlock Text="{Binding Income}" Style="{StaticResource TextBlockStyle.Center}" />
         </DataTemplate>
+
+        <ControlTemplate x:Key="BackgroundMenuItemTemplate" TargetType="MenuItem">
+            <Rectangle Height="60" Width="96" Margin="{StaticResource NormalMargin}"
+                       res:MahAppsBackgroundServices.BackgroundProperty="{x:Static Shape.FillProperty}"
+                       res:MahAppsBackgroundServices.BackgroundPath="{Binding}" />
+        </ControlTemplate>
+
+        <!--<ControlTemplate x:Key="AccentMenuItemTemplate" TargetType="MenuItem">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance res:Accent}">
+                <Ellipse Height="16" Width="16" Fill="{Binding AccentBrush}"
+                         Margin="{StaticResource NormalMargin}" />
+                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.Label}" />
+            </StackPanel>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="AppThemeMenuItemTemplate" TargetType="MenuItem">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance res:AppTheme}">
+                <Ellipse Height="16" Width="16" StrokeThickness="2"
+                         Fill="{Binding Background}" Stroke="{Binding BorderBrush}"
+                         Margin="{StaticResource NormalMargin}" />
+                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.Label}" />
+            </StackPanel>
+        </ControlTemplate>
+
+        <Style x:Key="MahAppsThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+            <Setter Property="CommandParameter" Value="{Binding (res:MahAppsTheme.Name)}" />
+        </Style>
+
+        <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MahAppsThemeMenuItemStyle}">
+            <Setter Property="Command" Value="{x:Static res:MahAppsThemeManager.ChangeAppThemeCommand}" />
+            <Setter Property="Template" Value="{StaticResource AppThemeMenuItemTemplate}" />
+        </Style>
+
+        <Style x:Key="AccentMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MahAppsThemeMenuItemStyle}">
+            <Setter Property="Command" Value="{x:Static res:MahAppsThemeManager.ChangeAccentCommand}" />
+            <Setter Property="Template" Value="{StaticResource AccentMenuItemTemplate}" />
+        </Style>-->
+
+        <Style x:Key="BackgroundMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+            <Setter Property="Command"
+                    Value="{Binding Source={StaticResource MainViewModel}, Path=SelectBackgroundCommand}" />
+            <Setter Property="CommandParameter" Value="{Binding}" />
+            <Setter Property="Template" Value="{StaticResource BackgroundMenuItemTemplate}" />
+        </Style>
     </Window.Resources>
 
     <Window.DataContext>
         <StaticResource ResourceKey="MainViewModel" />
     </Window.DataContext>
+
+    <res:MahAppsBackgroundServices.BackgroundPath>
+        <Binding Path="SelectedBackground" />
+    </res:MahAppsBackgroundServices.BackgroundPath>
 
     <i:Interaction.Triggers>
         <prm:InteractionRequestTrigger SourceObject="{Binding FileRequest}">
@@ -96,6 +144,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -104,7 +153,16 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="datPeople" Grid.Row="0" AutoGenerateColumns="False"
+        <Menu Grid.Row="0">
+            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+
+            <MenuItem Header="Background" ItemContainerStyle="{StaticResource BackgroundMenuItemStyle}"
+                      ItemsSource="{Binding BackgroundFiles}" />
+        </Menu>
+
+        <DataGrid x:Name="datPeople" Grid.Row="1" AutoGenerateColumns="False"
                   ItemsSource="{Binding People}"
                   SelectedItem="{Binding SelectedPerson}">
             <DataGrid.Columns>
@@ -119,7 +177,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -135,7 +193,7 @@
                              Command="{Binding DoAsyncCommand}" />
         </Grid>
 
-        <Grid Grid.Row="2" DataContext="{Binding SelectedPerson}"
+        <Grid Grid.Row="3" DataContext="{Binding SelectedPerson}"
               IsEnabled="{Binding Source={StaticResource MainViewModel}, Path=CanEdit}">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -201,9 +259,9 @@
 
                 <TextBlock Grid.Column="0" Text="IQ:"
                            Style="{StaticResource TextBlockStyle.Label}" />
-
-                <mah:NumericUpDown Grid.Column="1"
-                                   Value="{Binding IntelligeceQuotient}" />
+                <Slider Grid.Column="1" Minimum="0" Maximum="300" TickFrequency="1"
+                        Style="{StaticResource FlatSliderStyle}"
+                        Value="{Binding IntelligeceQuotient}" />
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6">
@@ -225,23 +283,16 @@
 
                 <Button Grid.Column="3" Style="{StaticResource IconButtonStyle}"
                         res:MahAppsContentControlServices.IconVisual="{DynamicResource appbar_page_solid_add}"
-                        Command="{Binding Source={StaticResource MainViewModel}, Path=BrowseAvatarCommand}"/>
+                        Command="{Binding Source={StaticResource MainViewModel}, Path=BrowseAvatarCommand}" />
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-        </Grid>
-
-        <ProgressBar x:Name="prgMain" Grid.Row="3"
+        <ProgressBar x:Name="prgMain" Grid.Row="4"
                      Value="{Binding Progress, Mode=OneWay}"
                      Visibility="{Binding State, Converter={StaticResource ProgressStateToVisibilityConverter}}"
                      IsIndeterminate="{Binding Progress, Mode=OneWay, Converter={StaticResource NullToBooleanConverter}}" />
 
-        <mah:ProgressRing Grid.Row="0" Height="16"
+        <mah:ProgressRing Grid.Row="0" Grid.RowSpan="7"
                           Visibility="{Binding State, Converter={StaticResource ProgressStateToVisibilityConverter}}" />
 
         <!--For Debug Only-->

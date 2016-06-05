@@ -1,0 +1,182 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:xaml="http://wpf.cb.com/xaml"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.progressbar.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="ProgressButtonTemplate" TargetType="xaml:ProgressButton">
+        <Grid>
+            <Border x:Name="Border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+
+                <Grid>
+                    <Rectangle x:Name="MouseOverRectangle" Fill="{DynamicResource BlackBrush}" Opacity="0" />
+                    <Rectangle x:Name="PressedRectangle" Fill="White" Opacity="0" />
+
+                    <mah:ContentControlEx x:Name="PART_ContentPresenter"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mah:ControlsHelper.ContentCharacterCasing)}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                    <ProgressBar x:Name="progressBar" Style="{TemplateBinding ProgressBarStyle}"
+                                 Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                 xaml:ProgressBarServices.Progress="{TemplateBinding Progress}"
+                                 Visibility="Hidden" />
+                </Grid>
+            </Border>
+
+            <Rectangle x:Name="FocusVisualWhite"
+                       Stroke="White"
+                       Opacity="0"
+                       IsHitTestVisible="False"
+                       StrokeDashArray="1,1"
+                       StrokeDashOffset="1.5"
+                       StrokeEndLineCap="Square" />
+            <Rectangle x:Name="FocusVisualBlack"
+                       Stroke="Black"
+                       Opacity="0"
+                       IsHitTestVisible="False"
+                       StrokeDashArray="1,1"
+                       StrokeDashOffset="0.5"
+                       StrokeEndLineCap="Square" />
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0"
+                                             Storyboard.TargetName="MouseOverRectangle"
+                                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                                             To="0.4" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0"
+                                             Storyboard.TargetName="PressedRectangle"
+                                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                                             To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0"
+                                             Storyboard.TargetName="Border"
+                                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                                             To="0.5" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0"
+                                             Storyboard.TargetName="FocusVisualWhite"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1" />
+                            <DoubleAnimation Duration="0"
+                                             Storyboard.TargetName="FocusVisualBlack"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unfocused" />
+                    <VisualState x:Name="PointerFocused" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="Black" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ProgressButtonProgressBarStyle" TargetType="ProgressBar" BasedOn="{StaticResource MetroProgressBar}">
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Maximum" Value="1" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Opacity" Value="0.85" />
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat=P}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+
+
+    <!--#region Button Style-->
+    <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
+
+    <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+        <Setter Property="Background" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="Height" Value="{DynamicResource IconButtonSize}" />
+        <Setter Property="Width" Value="{DynamicResource IconButtonSize}" />
+        <Setter Property="OpacityMask">
+            <Setter.Value>
+                <VisualBrush Stretch="Fill"
+                             Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccentBaseColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MetroCircleButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroCircleButtonStyle}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MetroFlatButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="DropDownButtonStyle" TargetType="mah:DropDownButton">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="mah:DropDownButton" BasedOn="{StaticResource DropDownButtonStyle}" />
+
+    <Style x:Key="ProgressButtonStyle" TargetType="xaml:ProgressButton" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="ProgressBarStyle" Value="{StaticResource ProgressButtonProgressBarStyle}" />
+        <Setter Property="Template" Value="{StaticResource ProgressButtonTemplate}" />
+    </Style>
+
+    <Style TargetType="xaml:ProgressButton" BasedOn="{StaticResource ProgressButtonStyle}" />
+
+    <Style x:Key="SplitButtonStyle" TargetType="mah:SplitButton">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="mah:SplitButton" BasedOn="{StaticResource SplitButtonStyle}" />
+    <!--#endregion-->
+
+</ResourceDictionary>

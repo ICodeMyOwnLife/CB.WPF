@@ -10,5 +10,6 @@
         <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/FlipControl.xaml" />
         <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/ListPopup.xaml" />
         <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/NumericControl.xaml" />
+        <ResourceDictionary Source="/CB.Wpf.Controls;component/Themes/ProgressButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
