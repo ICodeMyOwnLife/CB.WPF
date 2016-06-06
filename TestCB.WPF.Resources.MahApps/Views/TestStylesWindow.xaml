@@ -10,7 +10,7 @@
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                  xmlns:prm="http://prismlibrary.com/"
-                 xmlns:res="clr-namespace:CB.WPF.Resources.MahApps;assembly=CB.WPF.Resources.MahApps"
+                 xmlns:ema="clr-namespace:CB.WPF.ExtendedMahApps;assembly=CB.WPF.ExtendedMahApps"
                  mc:Ignorable="d"
                  Title="Test Styles" Height="640" Width="960" FontSize="13" WindowState="Maximized"
                  WindowStartupLocation="CenterOwner" Style="{StaticResource MetroWindowStyle}">
@@ -85,8 +85,8 @@
 
         <ControlTemplate x:Key="BackgroundMenuItemTemplate" TargetType="MenuItem">
             <Rectangle Height="60" Width="96" Margin="{StaticResource NormalMargin}"
-                       res:MahAppsBackgroundServices.BackgroundProperty="{x:Static Shape.FillProperty}"
-                       res:MahAppsBackgroundServices.BackgroundPath="{Binding}" />
+                       ema:MahAppsBackgroundServices.BackgroundProperty="{x:Static Shape.FillProperty}"
+                       ema:MahAppsBackgroundServices.BackgroundPath="{Binding}" />
         </ControlTemplate>
 
         <!--<ControlTemplate x:Key="AccentMenuItemTemplate" TargetType="MenuItem">
@@ -132,9 +132,9 @@
         <StaticResource ResourceKey="MainViewModel" />
     </Window.DataContext>
 
-    <res:MahAppsBackgroundServices.BackgroundPath>
+    <ema:MahAppsBackgroundServices.BackgroundPath>
         <Binding Path="SelectedBackground" />
-    </res:MahAppsBackgroundServices.BackgroundPath>
+    </ema:MahAppsBackgroundServices.BackgroundPath>
 
     <i:Interaction.Triggers>
         <prm:InteractionRequestTrigger SourceObject="{Binding FileRequest}">
@@ -282,7 +282,7 @@
                            Text="{Binding AvatarUrl}" ToolTip="{Binding AvatarUrl}" />
 
                 <Button Grid.Column="3" Style="{StaticResource IconButtonStyle}"
-                        res:MahAppsContentControlServices.IconVisual="{DynamicResource appbar_page_solid_add}"
+                        ema:MahAppsContentControlServices.IconVisual="{DynamicResource appbar_page_solid_add}"
                         Command="{Binding Source={StaticResource MainViewModel}, Path=BrowseAvatarCommand}" />
             </Grid>
         </Grid>

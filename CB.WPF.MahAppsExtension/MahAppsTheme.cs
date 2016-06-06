@@ -2,7 +2,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 
 
-namespace CB.WPF.Resources.MahApps
+namespace CB.WPF.MahAppsExtension
 {
     public abstract class MahAppsTheme
     {
@@ -29,6 +29,3 @@ namespace CB.WPF.Resources.MahApps
         #endregion
     }
 }
-
-
-// TODO: FlatSlider?

@@ -1,7 +1,7 @@
 using System.Windows.Media;
 
 
-namespace CB.WPF.Resources.MahApps
+namespace CB.WPF.ExtendedMahApps
 {
     public class Accent: MahAppsTheme
     {

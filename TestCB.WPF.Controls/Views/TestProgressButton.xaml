@@ -13,7 +13,7 @@
                  WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <vmd:TestProgressButtonViewModel x:Key="MainViewModel" />
+        <!--<vmd:TestProgressButtonViewModel x:Key="MainViewModel" />-->
 
         <DataTemplate x:Key="TaskTemplate" DataType="vmd:ProgressTaskViewModel">
             <xaml:ProgressButton Content="{Binding Name}" Command="{Binding ExecuteCommand}"
@@ -33,8 +33,8 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0">
-            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
-            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+            <!--<MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />-->
         </Menu>
 
         <ListBox Grid.Row="1" ItemsSource="{Binding Tasks}"

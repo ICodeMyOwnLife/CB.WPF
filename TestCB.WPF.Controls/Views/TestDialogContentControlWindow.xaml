@@ -5,7 +5,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:xaml="http://wpf.cb.com/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:mahApps="clr-namespace:CB.WPF.Resources.MahApps;assembly=CB.WPF.Resources.MahApps"
+                      xmlns:ema="clr-namespace:CB.WPF.ExtendedMahApps;assembly=CB.WPF.ExtendedMahApps"
                       mc:Ignorable="d"
                       Title="Test DialogContentControl" SizeToContent="WidthAndHeight">
 
@@ -23,14 +23,14 @@
         
         <Menu Grid.Row="0">
             <MenuItem Header="Theme"
-                      ItemsSource="{x:Static mahApps:MahAppsThemeManager.AppsThemes}">
+                      ItemsSource="{x:Static ema:MahAppsThemeManager.AppsThemes}">
                 <MenuItem.ItemContainerStyle>
                     <Style TargetType="MenuItem">
-                        <Setter Property="Command" Value="{Binding (mahApps:MahAppsTheme.ApplyCommand)}" />
+                        <Setter Property="Command" Value="{Binding (ema:MahAppsTheme.ApplyCommand)}" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="MenuItem">
-                                    <TextBlock Text="{Binding (mahApps:MahAppsTheme.Name)}" />
+                                    <TextBlock Text="{Binding (ema:MahAppsTheme.Name)}" />
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>

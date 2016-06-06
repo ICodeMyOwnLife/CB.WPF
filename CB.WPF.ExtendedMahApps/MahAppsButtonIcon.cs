@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Media;
 
 
-namespace CB.WPF.Resources.MahApps
+namespace CB.WPF.ExtendedMahApps
 {
     public class MahAppsButtonIcon: DependencyObject
     {

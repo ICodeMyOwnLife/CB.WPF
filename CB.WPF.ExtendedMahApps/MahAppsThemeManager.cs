@@ -7,7 +7,7 @@ using MahApps.Metro;
 using Microsoft.Practices.Prism.Commands;
 
 
-namespace CB.WPF.Resources.MahApps
+namespace CB.WPF.ExtendedMahApps
 {
     public class MahAppsThemeManager
     {

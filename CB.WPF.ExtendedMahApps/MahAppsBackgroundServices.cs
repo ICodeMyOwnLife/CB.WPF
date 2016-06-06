@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
-namespace CB.WPF.Resources.MahApps
+namespace CB.WPF.ExtendedMahApps
 {
     public static class MahAppsBackgroundServices
     {

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:xaml="http://wpf.cb.com/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps">
+                    xmlns:extendedMahApps="clr-namespace:CB.WPF.ExtendedMahApps;assembly=CB.WPF.ExtendedMahApps">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.buttons.xaml" />
@@ -134,7 +134,7 @@
         <Setter Property="OpacityMask">
             <Setter.Value>
                 <VisualBrush Stretch="Fill"
-                             Visual="{Binding Path=(local:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
+                             Visual="{Binding Path=(extendedMahApps:MahAppsContentControlServices.IconVisual), RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" />
             </Setter.Value>
         </Setter>
 
