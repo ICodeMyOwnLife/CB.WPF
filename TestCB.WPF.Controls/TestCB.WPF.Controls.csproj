@@ -140,9 +140,9 @@
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CB.WPF.ExtendedMahApps\CB.WPF.ExtendedMahApps.csproj">
-      <Project>{e3143ace-0535-40de-8b66-6a4ed8b211a8}</Project>
-      <Name>CB.WPF.ExtendedMahApps</Name>
+    <ProjectReference Include="..\CB.WPF.MahAppsExtension\CB.WPF.MahAppsExtension.csproj">
+      <Project>{29bf73a0-6a4d-484b-83aa-5e5e13473a5a}</Project>
+      <Name>CB.WPF.MahAppsExtension</Name>
     </ProjectReference>
     <ProjectReference Include="..\CB.WPF.Resources.MahApps\CB.WPF.Resources.MahApps.csproj">
       <Project>{88845a0d-9b1f-4d1a-92d3-0c8d97e4d747}</Project>

@@ -1,9 +1,9 @@
-﻿namespace TestFree
+﻿namespace TestFree.Views
 {
-    public partial class MainWindow
+    public partial class TestMahAppsThemeMenuItemWindow
     {
         #region  Constructors & Destructor
-        public MainWindow()
+        public TestMahAppsThemeMenuItemWindow()
         {
             InitializeComponent();
         }

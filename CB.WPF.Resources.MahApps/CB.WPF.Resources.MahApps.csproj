@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CB.WPF.MahAppsExtension">
+      <HintPath>..\CB.WPF.MahAppsExtension\bin\Debug\CB.WPF.MahAppsExtension.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.3.0.159, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA159\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -112,10 +115,6 @@
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CB.WPF.MahAppsExtension\CB.WPF.MahAppsExtension.csproj">
-      <Project>{29bf73a0-6a4d-484b-83aa-5e5e13473a5a}</Project>
-      <Name>CB.WPF.MahAppsExtension</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:CB.WPF.Resources.MahApps"
-                    xmlns:xaml="http://wpf.cb.com/xaml">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!--#region Embeded Resources-->
     <ResourceDictionary.MergedDictionaries>
@@ -11,6 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/flatslider.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Button.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--#endregion-->
@@ -25,9 +24,8 @@
 
     <Thickness x:Key="NormalMargin">4</Thickness>
 
-    
-    <!--#endregion-->
 
+    <!--#endregion-->
 
 
     <!--#region CheckBox Style-->
