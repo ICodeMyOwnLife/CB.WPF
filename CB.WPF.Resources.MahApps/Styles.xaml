@@ -70,6 +70,10 @@
     </Style>
 
     <Style TargetType="DataGrid" BasedOn="{StaticResource DataGridStyle}" />
+
+    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow" BasedOn="{StaticResource MetroDataGridRow}" />
+
+    <Style x:Key="DataGridCheckBoxStyle" TargetType="CheckBox" BasedOn="{StaticResource MetroDataGridCheckBox}" />
     <!--#endregion-->
 
 

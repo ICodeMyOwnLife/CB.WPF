@@ -85,8 +85,8 @@
     <Compile Include="Views\TestDialogContentControlWindow.xaml.cs">
       <DependentUpon>TestDialogContentControlWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TestProgressButton.xaml.cs">
-      <DependentUpon>TestProgressButton.xaml</DependentUpon>
+    <Compile Include="Views\TestProgressButtonWindow.xaml.cs">
+      <DependentUpon>TestProgressButtonWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -122,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TestProgressButton.xaml">
+    <Page Include="Views\TestProgressButtonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
