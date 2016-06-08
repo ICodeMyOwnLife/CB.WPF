@@ -238,7 +238,7 @@
 
     <!--#region Window Style-->
     <Style x:Key="MetroWindowStyle" TargetType="mah:MetroWindow">
-        <!--<Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush2}" />-->
+        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TitleAlignment" Value="Center" />
         <Setter Property="TitleCaps" Value="False" />
