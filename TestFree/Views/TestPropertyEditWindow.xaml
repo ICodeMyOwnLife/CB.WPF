@@ -1,0 +1,41 @@
+﻿<mah:MetroWindow x:Class="TestFree.Views.TestPropertyEditWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:vmd="clr-namespace:TestFree.ViewModels"
+                 xmlns:helpers="clr-namespace:TestFree.Helpers"
+                 Title="Test PropertyEdit" Height="600" Width="800" Style="{StaticResource MetroWindowStyle}"
+                 WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <vmd:TestPropertyEditViewModel x:Key="MainViewModel" />
+
+        <DataTemplate x:Key="StringEditTemplate">
+            <TextBlock Text="{Binding (helpers:PropertyServices.PropertyBinding}" />
+            <TextBox Text="{Binding (helpers:PropertyServices.Property}"></TextBox>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <StaticResource ResourceKey="{StaticResource MainViewModel}" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+        </Menu>
+
+        <StackPanel Grid.Row="1" DataContext="{Binding TestModel}">
+            <mah:ContentControlEx />
+        </StackPanel>
+
+        <StatusBar Grid.Row="2" />
+    </Grid>
+</mah:MetroWindow>

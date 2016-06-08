@@ -1,9 +1,9 @@
-﻿namespace TestCB.WPF.Controls.Views
+﻿namespace TestFree.Views
 {
-    public partial class TestProgressButton
+    public partial class TestPropertyEditWindow
     {
         #region  Constructors & Destructor
-        public TestProgressButton()
+        public TestPropertyEditWindow()
         {
             InitializeComponent();
         }

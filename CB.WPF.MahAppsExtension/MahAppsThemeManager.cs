@@ -59,3 +59,6 @@ namespace CB.WPF.MahAppsExtension
         #endregion
     }
 }
+
+
+// TODO: Selected AppTheme and Accent

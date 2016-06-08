@@ -1,4 +1,4 @@
-﻿<mah:MetroWindow x:Class="TestCB.WPF.Controls.Views.TestProgressButton"
+﻿<mah:MetroWindow x:Class="TestCB.WPF.Controls.Views.TestProgressButtonWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
                  xmlns:dvm="clr-namespace:TestCB.WPF.Controls.DesignViewModels"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  mc:Ignorable="d"
-                 Title="TestProgressButton" Height="600" Width="800" Style="{StaticResource MetroWindowStyle}"
+                 Title="TestProgressButtonWindow" Height="600" Width="800" Style="{StaticResource MetroWindowStyle}"
                  d:DataContext="{d:DesignInstance dvm:TestProgressButtonDesignViewModel}"
                  WindowStartupLocation="CenterScreen">
 
@@ -37,15 +37,15 @@
             <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
         </Menu>
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding Tasks}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 ItemTemplate="{StaticResource TaskTemplate}">
-            <ListBox.ItemsPanel>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Tasks}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ItemTemplate="{StaticResource TaskTemplate}">
+            <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid IsItemsHost="True" />
+                    <WrapPanel IsItemsHost="True" />
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 
         <Button Grid.Row="2" Content="Add Task"
                 Command="{Binding AddTaskCommand}" />
