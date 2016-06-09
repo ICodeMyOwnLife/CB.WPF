@@ -93,6 +93,11 @@
       <SubType>Code</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.DataGrid.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles.Menu.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Code</SubType>

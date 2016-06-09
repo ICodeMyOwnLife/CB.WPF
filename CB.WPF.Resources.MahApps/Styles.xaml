@@ -10,6 +10,7 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/flatslider.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Button.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.DataGrid.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--#endregion-->
@@ -23,8 +24,6 @@
     <sys:Double x:Key="IconButtonSize">20</sys:Double>
 
     <Thickness x:Key="NormalMargin">4</Thickness>
-
-
     <!--#endregion-->
 
 
@@ -45,35 +44,6 @@
     </Style>
 
     <Style TargetType="ComboBox" BasedOn="{StaticResource ComboBoxStyle}" />
-    <!--#endregion-->
-
-
-    <!--#region DataGrid Style-->
-    <Style x:Key="DataGridCellStyle" TargetType="DataGridCell" BasedOn="{StaticResource AzureDataGridCell}">
-        <Setter Property="Background" Value="{x:Null}" />
-    </Style>
-
-    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}" />
-
-    <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader"
-           BasedOn="{StaticResource AzureDataGridColumnHeader}">
-        <Setter Property="Background" Value="{x:Null}" />
-    </Style>
-
-    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridColumnHeaderStyle}" />
-
-    <Style x:Key="DataGridStyle" TargetType="DataGrid" BasedOn="{StaticResource AzureDataGrid}">
-        <Setter Property="AlternatingRowBackground" Value="{DynamicResource AccentColorBrush4}" />
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="RowBackground" Value="{x:Null}" />
-    </Style>
-
-    <Style TargetType="DataGrid" BasedOn="{StaticResource DataGridStyle}" />
-
-    <Style x:Key="DataGridRowStyle" TargetType="DataGridRow" BasedOn="{StaticResource MetroDataGridRow}" />
-
-    <Style x:Key="DataGridCheckBoxStyle" TargetType="CheckBox" BasedOn="{StaticResource MetroDataGridCheckBox}" />
     <!--#endregion-->
 
 
@@ -207,8 +177,18 @@
 
     <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
 
-    <Style x:Key="TextBlockStyle.Label" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+    <Style x:Key="TextBlockStyle.LeftAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.RightAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.CenterAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
     <!--#endregion-->
