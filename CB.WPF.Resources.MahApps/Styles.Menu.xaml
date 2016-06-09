@@ -16,6 +16,10 @@
 
 
     <!--#region Declaration-->
+    <mae:ChosenAccentConverter x:Key="ChosenAccentConverter" />
+
+    <mae:ChosenAppThemeConverter x:Key="ChosenAppThemeConverter" />
+
     <Style x:Key="MahAppsThemeMenuIconStyle" TargetType="Ellipse">
         <Setter Property="Height" Value="16" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin.Right}" />
@@ -73,12 +77,14 @@
     <Style x:Key="AccentChildMenuItemStyle" TargetType="MenuItem"
            BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
         <Setter Property="Header" Value="{StaticResource AccentChildMenuItemHeader}" />
+        <Setter Property="IsChecked" Value="{Binding Converter={StaticResource ChosenAccentConverter}, Mode=OneTime}" />
         <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__accent" />
     </Style>
 
     <Style x:Key="AppThemeChildMenuItemStyle" TargetType="MenuItem"
            BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
         <Setter Property="Header" Value="{StaticResource AppThemeChildMenuItemHeader}" />
+        <Setter Property="IsChecked" Value="{Binding Converter={StaticResource ChosenAppThemeConverter}, Mode=OneTime}" />
         <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__appTheme" />
     </Style>
 

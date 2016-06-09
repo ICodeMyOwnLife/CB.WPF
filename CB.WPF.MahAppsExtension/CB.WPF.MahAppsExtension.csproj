@@ -79,6 +79,9 @@
   <ItemGroup>
     <Compile Include="Accent.cs" />
     <Compile Include="AppTheme.cs" />
+    <Compile Include="ChosenMahAppsThemeConverter.cs" />
+    <Compile Include="ChosenAccentConverter.cs" />
+    <Compile Include="ChosenAppThemeConverter.cs" />
     <Compile Include="MahAppsBackgroundServices.cs" />
     <Compile Include="MahAppsButtonIcon.cs" />
     <Compile Include="MahAppsContentControlServices.cs" />
