@@ -9,24 +9,14 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/flatslider.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Shared.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Button.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.DataGrid.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Menu.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--#endregion-->
 
-
-    <!--#region Declaration-->
-    <sys:Double x:Key="NormalControlSize">16</sys:Double>
-
-    <sys:Double x:Key="SmallControlSize">8</sys:Double>
-
-    <sys:Double x:Key="IconButtonSize">20</sys:Double>
-
-    <Thickness x:Key="NormalMargin">4</Thickness>
-    <!--#endregion-->
-
-
+    
     <!--#region CheckBox Style-->
     <Style x:Key="CheckBoxStyle" TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
@@ -166,30 +156,6 @@
                 <Setter Property="Width" Value="12" />
             </Trigger>
         </Style.Triggers>
-    </Style>
-    <!--#endregion-->
-
-
-    <!--#region TextBlock Style-->
-    <Style x:Key="TextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
-
-    <Style x:Key="TextBlockStyle.LeftAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-    </Style>
-
-    <Style x:Key="TextBlockStyle.RightAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
-        <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-    </Style>
-
-    <Style x:Key="TextBlockStyle.CenterAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
     <!--#endregion-->
 

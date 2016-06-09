@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:Double x:Key="NormalControlSize">16</sys:Double>
+
+    <sys:Double x:Key="SmallControlSize">8</sys:Double>
+
+    <sys:Double x:Key="IconButtonSize">20</sys:Double>
+
+    <sys:Double x:Key="MarginSize">8</sys:Double>
+
+    <Thickness x:Key="NormalMargin" Left="{StaticResource MarginSize}" Top="{StaticResource MarginSize}"
+               Right="{StaticResource MarginSize}" Bottom="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.Left" Left="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.Right" Right="{StaticResource MarginSize}" />
+</ResourceDictionary>

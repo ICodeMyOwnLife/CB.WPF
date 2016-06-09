@@ -9,6 +9,8 @@
     <!--#region Embedded Resources-->
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.contextmenu.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Shared.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.TextBlock.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--#endregion-->
 
@@ -16,26 +18,30 @@
     <!--#region Declaration-->
     <Style x:Key="MahAppsThemeMenuIconStyle" TargetType="Ellipse">
         <Setter Property="Height" Value="16" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin.Right}" />
         <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Width" Value="16" />
     </Style>
 
-    <ControlTemplate x:Key="AccentMenuItemTemplate" TargetType="MenuItem">
-        <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance mae:Accent}">
-            <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
-                     Fill="{Binding AccentBrush}" Stroke="Black" />
-            <TextBlock Text="{Binding Name}" Style="{DynamicResource TextBlockStyle.LeftAlign}" />
-        </StackPanel>
-    </ControlTemplate>
+    <Style x:Key="MahAppsThemeMenuTextStyle" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin.Left}" />
+        <Setter Property="Text" Value="{Binding Name}" />
+    </Style>
 
-    <ControlTemplate x:Key="AppThemeMenuItemTemplate" TargetType="MenuItem">
-        <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance mae:AppTheme}">
-            <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
-                     Fill="{Binding Background}" Stroke="{Binding BorderBrush}" />
-            <TextBlock Text="{Binding Name}" Style="{DynamicResource TextBlockStyle.LeftAlign}" />
-        </StackPanel>
-    </ControlTemplate>
+    <StackPanel x:Key="AccentChildMenuItemHeader" x:Shared="False"
+                Orientation="Horizontal" d:DataContext="{d:DesignInstance mae:Accent}">
+        <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
+                 Fill="{Binding AccentBrush}" Stroke="Black" />
+        <TextBlock Style="{StaticResource MahAppsThemeMenuTextStyle}" />
+    </StackPanel>
+
+    <StackPanel x:Key="AppThemeChildMenuItemHeader" x:Shared="False"
+                Orientation="Horizontal" d:DataContext="{d:DesignInstance mae:AppTheme}">
+        <Ellipse Style="{StaticResource MahAppsThemeMenuIconStyle}"
+                 Fill="{Binding Background}" Stroke="{Binding BorderBrush}" />
+        <TextBlock Style="{StaticResource MahAppsThemeMenuTextStyle}" />
+    </StackPanel>
     <!--#endregion-->
 
 
@@ -64,16 +70,16 @@
         <Setter Property="IsCheckable" Value="True" />
     </Style>
 
-    <Style x:Key="AppThemeChildMenuItemStyle" TargetType="MenuItem"
-           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
-        <Setter Property="Template" Value="{StaticResource AppThemeMenuItemTemplate}" />
-        <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__appTheme" />
-    </Style>
-
     <Style x:Key="AccentChildMenuItemStyle" TargetType="MenuItem"
            BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
-        <Setter Property="Template" Value="{StaticResource AccentMenuItemTemplate}" />
+        <Setter Property="Header" Value="{StaticResource AccentChildMenuItemHeader}" />
         <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__accent" />
+    </Style>
+
+    <Style x:Key="AppThemeChildMenuItemStyle" TargetType="MenuItem"
+           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
+        <Setter Property="Header" Value="{StaticResource AppThemeChildMenuItemHeader}" />
+        <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__appTheme" />
     </Style>
 
     <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
