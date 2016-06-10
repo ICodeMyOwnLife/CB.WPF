@@ -62,6 +62,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA159\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -82,15 +83,25 @@
     <Compile Include="ChosenMahAppsThemeConverter.cs" />
     <Compile Include="ChosenAccentConverter.cs" />
     <Compile Include="ChosenAppThemeConverter.cs" />
+    <Compile Include="MahAppsApplication.cs" />
     <Compile Include="MahAppsBackgroundServices.cs" />
     <Compile Include="MahAppsButtonIcon.cs" />
+    <Compile Include="MahAppsConfigSection.cs" />
+    <Compile Include="MahAppsConfiguration.cs" />
     <Compile Include="MahAppsContentControlServices.cs" />
+    <Compile Include="MahAppsDefaults.cs" />
     <Compile Include="MahAppsTheme.cs" />
     <Compile Include="MahAppsThemeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CB.Configuration\CB.Configuration.Common\CB.Configuration.Common.csproj">
+      <Project>{9f2166ae-f09b-49c1-9b6d-2ee861593a73}</Project>
+      <Name>CB.Configuration.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
