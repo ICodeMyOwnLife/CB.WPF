@@ -16,11 +16,17 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary
+                    Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />
+                <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/styles/accents/basedark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/accents/taupe.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Thickness x:Key="NormalMargin">12</Thickness>
+            
+            <Style TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
+                <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
+            </Style>
             
             <Style TargetType="DataGrid" BasedOn="{StaticResource AzureDataGrid}">
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
@@ -42,7 +48,7 @@
             </Style>
 
             <DataTemplate x:Key="WindowNameColumn" DataType="sys:Type">
-                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle}" />
+                <TextBlock Text="{Binding Name}" Style="{StaticResource MetroTextBlock}" />
             </DataTemplate>
 
             <DataTemplate x:Key="ShowWindowButtonColumn" DataType="sys:Type">
