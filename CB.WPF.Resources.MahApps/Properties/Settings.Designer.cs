@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CB.WPF.Resources.MahApps.Properties {
+namespace CB.WPF.MahAppsResources.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

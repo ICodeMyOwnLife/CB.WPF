@@ -1,0 +1,17 @@
+﻿<mah:MetroWindow x:Class="CB.WPF.MahAppsResources.Windows.MahAppsNotifyWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:xaml="http://wpf.cb.com/xaml"
+                 mc:Ignorable="d" MinHeight="160" MinWidth="360" SizeToContent="WidthAndHeight"
+                 Style="{DynamicResource MetroWindowStyle}"
+                 WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Content="OK" xaml:ButtonServices.IsOKButton="True"
+                HorizontalAlignment="Right" IsCancel="True" IsDefault="True" />
+        <Label Content="{Binding Content}" />
+    </DockPanel>
+</mah:MetroWindow>
