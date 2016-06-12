@@ -115,6 +115,10 @@
       <Project>{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}</Project>
       <Name>CB.Model.Prism</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CB.Prism\CB.Prism.Interactivity\CB.Prism.Interactivity.csproj">
+      <Project>{640C072B-F368-4D76-9969-9C6BFE4070D3}</Project>
+      <Name>CB.Prism.Interactivity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
