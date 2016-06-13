@@ -29,6 +29,3 @@ namespace TestMahAppsResources.Helpers
         #endregion
     }
 }
-
-
-//TODO: BaseDark BaseLight

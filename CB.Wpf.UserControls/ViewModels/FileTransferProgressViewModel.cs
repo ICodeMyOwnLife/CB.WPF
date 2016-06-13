@@ -90,6 +90,3 @@ namespace CB.Wpf.UserControls
         #endregion
     }
 }
-
-
-// TODO: Xaml namespace: cb.xaml??

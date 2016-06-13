@@ -4,24 +4,33 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:vmd="clr-namespace:TestMahAppsResources.ViewModels"
                  xmlns:mdl="clr-namespace:TestMahAppsResources.Models"
+                 xmlns:xaml="http://wpf.cb.com/xaml"
                  Title="TestMahAppsIconWindow" Height="720" Width="1200" Style="{StaticResource MetroWindowStyle}"
                  WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <xaml:KeyToValueResourceConverter x:Key="ResourceConverter" />
+
         <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle.CenterAlign}" />
+
+        <Style x:Key="IconContent" TargetType="ContentControl">
+            <Setter Property="Content"
+                    Value="{Binding (mdl:MahAppsIcon.Name), Converter={StaticResource ResourceConverter}}" />
+        </Style>
 
         <Style TargetType="Viewbox">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
-            <Setter Property="MaxWidth" Value="80" />
+            <Setter Property="MaxWidth" Value="64" />
         </Style>
 
         <DataTemplate x:Key="IconTemplate" DataType="mdl:MahAppsIcon">
-            <StackPanel Width="96">
+            <StackPanel Width="80" ToolTip="{Binding Name}">
                 <Viewbox>
-                    <ContentControl Content="{Binding Icon}" />
+                    <ContentControl Style="{StaticResource IconContent}" />
                 </Viewbox>
-                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
+                <TextBlock Text="{Binding Name}" FontSize="9"
+                           Style="{StaticResource TextBlockStyle.CenterAlign}" />
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -45,7 +54,7 @@
 
         <DockPanel Grid.Row="1">
             <TextBlock DockPanel.Dock="Left" Text="Filter:" />
-            <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged, Delay=250}" />
+            <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged, Delay=350}" />
         </DockPanel>
 
         <ListBox Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -65,7 +74,7 @@
             </Grid.ColumnDefinitions>
 
             <Viewbox Grid.Column="0">
-                <ContentControl Content="{Binding Icon}" />
+                <ContentControl Style="{StaticResource IconContent}" />
             </Viewbox>
 
             <TextBlock Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Left" />
