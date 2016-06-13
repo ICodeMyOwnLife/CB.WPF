@@ -10,10 +10,10 @@
     <Window.Resources>
         <vmd:TestPropertyEditViewModel x:Key="MainViewModel" />
 
-        <DataTemplate x:Key="StringEditTemplate">
+        <!--<DataTemplate x:Key="StringEditTemplate">
             <TextBlock Text="{Binding (helpers:PropertyServices.PropertyBinding}" />
             <TextBox Text="{Binding (helpers:PropertyServices.Property}"></TextBox>
-        </DataTemplate>
+        </DataTemplate>-->
     </Window.Resources>
 
     <Window.DataContext>
