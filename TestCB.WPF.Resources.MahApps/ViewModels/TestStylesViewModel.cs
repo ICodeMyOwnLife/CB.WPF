@@ -78,8 +78,10 @@ namespace TestMahAppsResources.ViewModels
 
         public IEnumerable<string> Commands { get; } = new[] { ADD_CMD, SAVE_CMD, DEL_CMD };
 
-        public ConfirmationInteractionRequest<IConfirmation> FileRequest { get; } =
-            new ConfirmationInteractionRequest<IConfirmation>();
+        /*public ConfirmationInteractionRequest<IConfirmation> FileRequest { get; } =
+            new ConfirmationInteractionRequest<IConfirmation>();*/
+
+        public InteractionContextRequest<IConfirmContext> FileRequest { get; } = new InteractionContextRequest<IConfirmContext>();
 
         public ObservableCollection<Person> People
         {

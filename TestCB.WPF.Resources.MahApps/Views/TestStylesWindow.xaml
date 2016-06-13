@@ -53,34 +53,34 @@
         </DataTemplate>
 
         <DataTemplate x:Key="NameColumn" DataType="models:Person">
-            <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.Center}" />
+            <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="BirthDateColumn" DataType="models:Person">
             <TextBlock Text="{Binding DateOfBirth, StringFormat={}{0:MM-dd-yyyy}}"
-                       Style="{StaticResource TextBlockStyle.Center}" />
+                       Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="SexColumn" DataType="models:Person">
             <TextBlock Text="{Binding IsMale, Converter={StaticResource BoolToSexConverter}}"
-                       Style="{StaticResource TextBlockStyle.Center}" />
+                       Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="MarriageColumn" DataType="models:Person">
             <TextBlock Text="{Binding IsMarried, Converter={StaticResource BoolToMarriageStateConverter}}"
-                       Style="{StaticResource TextBlockStyle.Center}" />
+                       Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="ReligionColumn" DataType="models:Person">
-            <TextBlock Text="{Binding Religion}" Style="{StaticResource TextBlockStyle.Center}" />
+            <TextBlock Text="{Binding Religion}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="IqColumn" DataType="models:Person">
-            <TextBlock Text="{Binding IntelligeceQuotient}" Style="{StaticResource TextBlockStyle.Center}" />
+            <TextBlock Text="{Binding IntelligeceQuotient}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <DataTemplate x:Key="IncomeColumn" DataType="models:Person">
-            <TextBlock Text="{Binding Income}" Style="{StaticResource TextBlockStyle.Center}" />
+            <TextBlock Text="{Binding Income}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
         </DataTemplate>
 
         <ControlTemplate x:Key="BackgroundMenuItemTemplate" TargetType="MenuItem">
@@ -211,12 +211,12 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"
-                       Style="{StaticResource TextBlockStyle.Label}" />
+                       Style="{StaticResource TextBlockStyle.RightAlign}" />
             <TextBox Grid.Row="0" Grid.Column="1"
                      Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
 
             <TextBlock Grid.Row="0" Grid.Column="2" Text="Birthday:"
-                       Style="{StaticResource TextBlockStyle.Label}" />
+                       Style="{StaticResource TextBlockStyle.RightAlign}" />
             <DatePicker Grid.Row="0" Grid.Column="3"
                         SelectedDate="{Binding DateOfBirth}" />
 
@@ -228,7 +228,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Sex:"
-                           Style="{StaticResource TextBlockStyle.Label}" />
+                           Style="{StaticResource TextBlockStyle.RightAlign}" />
 
                 <RadioButton Grid.Column="1" Content="Female"
                              IsChecked="{Binding IsMale, Converter={StaticResource NotConverter}}" />
@@ -241,13 +241,13 @@
                       IsChecked="{Binding IsMarried}" />
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Religion:"
-                       Style="{StaticResource TextBlockStyle.Label}" />
+                       Style="{StaticResource TextBlockStyle.RightAlign}" />
             <ComboBox Grid.Row="1" Grid.Column="1"
                       ItemsSource="{xaml:EnumValues {x:Type models:Religion}}"
                       SelectedItem="{Binding Religion}" />
 
             <TextBlock Grid.Row="1" Grid.Column="2" Text="Income:"
-                       Style="{StaticResource TextBlockStyle.Label}" />
+                       Style="{StaticResource TextBlockStyle.RightAlign}" />
             <mah:NumericUpDown Grid.Row="1" Grid.Column="3"
                                Value="{Binding Income}" />
 
@@ -258,7 +258,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="IQ:"
-                           Style="{StaticResource TextBlockStyle.Label}" />
+                           Style="{StaticResource TextBlockStyle.RightAlign}" />
                 <Slider Grid.Column="1" Minimum="0" Maximum="300" TickFrequency="1"
                         Style="{StaticResource FlatSliderStyle}"
                         Value="{Binding IntelligeceQuotient}" />
@@ -273,12 +273,12 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="Avatar:"
-                           Style="{StaticResource TextBlockStyle.Label}" />
+                           Style="{StaticResource TextBlockStyle.RightAlign}" />
 
                 <mah:RevealImage Grid.Column="1" Height="60" Width="60" VerticalAlignment="Stretch"
                                  Image="{Binding AvatarUrl}" />
 
-                <TextBlock Grid.Column="2" Style="{StaticResource TextBlockStyle.Label}"
+                <TextBlock Grid.Column="2" Style="{StaticResource TextBlockStyle.RightAlign}"
                            Text="{Binding AvatarUrl}" ToolTip="{Binding AvatarUrl}" />
 
                 <Button Grid.Column="3" Style="{StaticResource IconButtonStyle}"

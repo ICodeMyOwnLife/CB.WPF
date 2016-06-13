@@ -1,0 +1,74 @@
+﻿<mah:MetroWindow x:Class="TestMahAppsResources.Views.TestMahAppsIconWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:vmd="clr-namespace:TestMahAppsResources.ViewModels"
+                 xmlns:mdl="clr-namespace:TestMahAppsResources.Models"
+                 Title="TestMahAppsIconWindow" Height="720" Width="1200" Style="{StaticResource MetroWindowStyle}"
+                 WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle.CenterAlign}" />
+
+        <Style TargetType="Viewbox">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
+            <Setter Property="MaxWidth" Value="80" />
+        </Style>
+
+        <DataTemplate x:Key="IconTemplate" DataType="mdl:MahAppsIcon">
+            <StackPanel Width="96">
+                <Viewbox>
+                    <ContentControl Content="{Binding Icon}" />
+                </Viewbox>
+                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.CenterAlign}" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vmd:TestMahAppsIconViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+        </Menu>
+
+        <DockPanel Grid.Row="1">
+            <TextBlock DockPanel.Dock="Left" Text="Filter:" />
+            <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged, Delay=250}" />
+        </DockPanel>
+
+        <ListBox Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding IconsView}" SelectedItem="{Binding SelectedIcon}"
+                 SelectedIndex="0" ItemTemplate="{StaticResource IconTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListBox>
+
+        <Grid Grid.Row="3" DataContext="{Binding SelectedIcon}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Viewbox Grid.Column="0">
+                <ContentControl Content="{Binding Icon}" />
+            </Viewbox>
+
+            <TextBlock Grid.Column="1" Text="{Binding Name}" HorizontalAlignment="Left" />
+        </Grid>
+    </Grid>
+</mah:MetroWindow>

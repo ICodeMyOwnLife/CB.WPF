@@ -8,16 +8,12 @@
                 <ResourceDictionary Source="pack://application:,,,/CB.WPF.Resources.MahApps;component/Styles.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/basedark.xaml" />
-                <ResourceDictionary Source="Resources/Icons.xaml" />
+                <ResourceDictionary Source="Resources/IconsNonShared.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Thickness x:Key="NormalMargin">8</Thickness>
 
             <VisualBrush x:Key="BrowseBrush" Visual="{DynamicResource appbar_folder_open}" Stretch="Fill" />
-
-            <Style x:Key="TextBlockStyle.Center" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </tst:TestApplication>
