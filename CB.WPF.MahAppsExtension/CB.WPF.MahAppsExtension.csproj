@@ -80,9 +80,10 @@
   <ItemGroup>
     <Compile Include="Accent.cs" />
     <Compile Include="AppTheme.cs" />
-    <Compile Include="ChosenMahAppsThemeConverter.cs" />
-    <Compile Include="ChosenAccentConverter.cs" />
-    <Compile Include="ChosenAppThemeConverter.cs" />
+    <Compile Include="AttachedProperties\MetroWindowServices.cs" />
+    <Compile Include="Converters\ChosenMahAppsThemeConverter.cs" />
+    <Compile Include="Converters\ChosenAccentConverter.cs" />
+    <Compile Include="Converters\ChosenAppThemeConverter.cs" />
     <Compile Include="MahAppsApplication.cs" />
     <Compile Include="MahAppsBackgroundServices.cs" />
     <Compile Include="MahAppsButtonIcon.cs" />
