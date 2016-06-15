@@ -89,37 +89,6 @@
                        mae:MahAppsBackgroundServices.BackgroundPath="{Binding}" />
         </ControlTemplate>
 
-        <!--<ControlTemplate x:Key="AccentMenuItemTemplate" TargetType="MenuItem">
-            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance res:Accent}">
-                <Ellipse Height="16" Width="16" Fill="{Binding AccentBrush}"
-                         Margin="{StaticResource NormalMargin}" />
-                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.Label}" />
-            </StackPanel>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="AppThemeMenuItemTemplate" TargetType="MenuItem">
-            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance res:AppTheme}">
-                <Ellipse Height="16" Width="16" StrokeThickness="2"
-                         Fill="{Binding Background}" Stroke="{Binding BorderBrush}"
-                         Margin="{StaticResource NormalMargin}" />
-                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.Label}" />
-            </StackPanel>
-        </ControlTemplate>
-
-        <Style x:Key="MahAppsThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
-            <Setter Property="CommandParameter" Value="{Binding (res:MahAppsTheme.Name)}" />
-        </Style>
-
-        <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MahAppsThemeMenuItemStyle}">
-            <Setter Property="Command" Value="{x:Static res:MahAppsThemeManager.ChangeAppThemeCommand}" />
-            <Setter Property="Template" Value="{StaticResource AppThemeMenuItemTemplate}" />
-        </Style>
-
-        <Style x:Key="AccentMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MahAppsThemeMenuItemStyle}">
-            <Setter Property="Command" Value="{x:Static res:MahAppsThemeManager.ChangeAccentCommand}" />
-            <Setter Property="Template" Value="{StaticResource AccentMenuItemTemplate}" />
-        </Style>-->
-
         <Style x:Key="BackgroundMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
             <Setter Property="Command"
                     Value="{Binding Source={StaticResource MainViewModel}, Path=SelectBackgroundCommand}" />

@@ -87,7 +87,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-
     <Page Include="Windows\MahAppsNotifyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +113,11 @@
     <Page Include="Styles.Menu.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.Pickers.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.Shared.xaml">
