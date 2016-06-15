@@ -164,6 +164,4 @@ namespace CB.WPF.MahAppsExtension
     }
 }
 
-
-// TODO: ApplyConfig and SaveConfig: Debug ChangeAppStyle!!!
 // TODO: DataGridRowHeaderGripper background
