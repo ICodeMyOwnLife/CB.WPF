@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.listbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.listview.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--#region ListBox Style-->
+    <Style x:Key="ListBoxStyle" TargetType="ListBox" BasedOn="{StaticResource MetroListBox}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style TargetType="ListBox" BasedOn="{StaticResource ListBoxStyle}" />
+    <!--#endregion-->
+
+    <!--#region ListView Style-->
+    <Style x:Key="ListViewStyle" TargetType="ListView" BasedOn="{StaticResource MetroListView}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style TargetType="ListView" BasedOn="{StaticResource ListViewStyle}" />
+    <!--#endregion-->
+
+</ResourceDictionary>
