@@ -9,7 +9,7 @@
                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                  xmlns:prm="http://prismlibrary.com/"
                  mc:Ignorable="d"
-                 Title="Test Window" Height="400" Width="800" d:DataContext="{d:DesignInstance local:TestViewModel}"
+                 Title="Test Window" Width="640" SizeToContent="Height" d:DataContext="{d:DesignInstance local:TestViewModel}"
                  TitleAlignment="Center" TitleCharacterCasing="Normal" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -37,7 +37,7 @@
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </Style>
 
-            <Style TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
+            <Style x:Key="TextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
@@ -48,7 +48,7 @@
             </Style>
 
             <DataTemplate x:Key="WindowNameColumn" DataType="sys:Type">
-                <TextBlock Text="{Binding Name}" Style="{StaticResource MetroTextBlock}" />
+                <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle}" />
             </DataTemplate>
 
             <DataTemplate x:Key="ShowWindowButtonColumn" DataType="sys:Type">
@@ -88,13 +88,15 @@
         <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AutoGenerateColumns="False"
                   ItemsSource="{Binding WindowTypes}" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Window Type" SortMemberPath="Name"
+                <DataGridTemplateColumn Header="Window Type" Width="*" SortMemberPath="Name"
                                         CellTemplate="{StaticResource WindowNameColumn}" />
 
-                <DataGridTemplateColumn Header="Command" HeaderStyle="{StaticResource HeaderStyle.Center}"
+                <DataGridTemplateColumn Header="Command" Width="100"
+                                        HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowWindowButtonColumn}" />
 
-                <DataGridTemplateColumn Header="Command" HeaderStyle="{StaticResource HeaderStyle.Center}"
+                <DataGridTemplateColumn Header="Command" Width="120"
+                                        HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowDialogWindowButtonColumn}" />
             </DataGrid.Columns>
         </DataGrid>
