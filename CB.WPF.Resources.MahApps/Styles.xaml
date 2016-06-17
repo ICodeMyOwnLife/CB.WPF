@@ -11,6 +11,8 @@
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Shared.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Button.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.DataGrid.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.GridSplitter.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.GroupBox.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.List.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Menu.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Pickers.xaml" />
@@ -47,7 +49,6 @@
 
     <Style TargetType="DatePicker" BasedOn="{StaticResource DatePickerStyle}" />
     <!--#endregion-->
-
 
     <!--#region Image Style-->
     <Style x:Key="RevealImageStyle" TargetType="mah:RevealImage">

@@ -31,6 +31,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CB.WPF.MahAppsExtension">
       <HintPath>..\CB.WPF.MahAppsExtension\bin\Debug\CB.WPF.MahAppsExtension.dll</HintPath>
@@ -101,6 +105,16 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.DataGrid.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.GridSplitter.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.GroupBox.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
