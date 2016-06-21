@@ -63,6 +63,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Windows\MahAppsConfirmWindow.xaml.cs">
+      <DependentUpon>MahAppsConfirmWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MahAppsNotifyWindow.xaml.cs">
       <DependentUpon>MahAppsNotifyWindow.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Windows\MahAppsConfirmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MahAppsNotifyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

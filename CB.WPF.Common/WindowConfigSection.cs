@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Windows;
 
 
 namespace CB.WPF.Common
@@ -48,6 +49,20 @@ namespace CB.WPF.Common
         {
             get { return (double)this[Y_ATTR]; }
             set { this[Y_ATTR] = value; }
+        }
+        #endregion
+
+
+        #region Methods
+        public void Apply(Window window)
+        {
+            if (window == null) return;
+
+            if (!double.IsNaN(Height)) window.Height = Height;
+            if (!double.IsNaN(Width)) window.Width = Width;
+            if (!double.IsNaN(X)) window.Left = X;
+            if (!double.IsNaN(Y)) window.Top = Y;
+            if (HideOnStart) window.Hide();
         }
         #endregion
     }
