@@ -60,18 +60,6 @@
     <!--#endregion-->
 
 
-    <!--#region NumericUpDown Style-->
-    <Style x:Key="NumericUpDownStyle" TargetType="mah:NumericUpDown">
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="Height" Value="{DynamicResource NormalControlSize}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="UpDownButtonsWidth" Value="{DynamicResource NormalControlSize}" />
-    </Style>
-
-    <Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource NumericUpDownStyle}" />
-    <!--#endregion-->
-
-
     <!--#region ProgressBar Style-->
     <Style x:Key="ProgressBarStyle" TargetType="ProgressBar" BasedOn="{StaticResource MetroProgressBar}">
         <Setter Property="Height" Value="{DynamicResource SmallControlSize}" />
