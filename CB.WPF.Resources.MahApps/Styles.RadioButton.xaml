@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Embeded Resources-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.radiobutton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!--#endregion-->
+
+
+    <!--#region RadioButton Style-->
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton" BasedOn="{StaticResource MetroRadioButton}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="RadioButton" BasedOn="{StaticResource RadioButtonStyle}" />
+    <!--#endregion-->
+</ResourceDictionary>

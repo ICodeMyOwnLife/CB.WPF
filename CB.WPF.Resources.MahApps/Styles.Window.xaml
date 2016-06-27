@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+
+    <!--#region Window Style-->
+    <Style x:Key="MetroWindowStyle" TargetType="mah:MetroWindow">
+        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TitleAlignment" Value="Center" />
+        <Setter Property="TitleCaps" Value="False" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="WindowTransitionsEnabled" Value="True" />
+    </Style>
+
+    <Style TargetType="mah:MetroWindow" BasedOn="{StaticResource MetroWindowStyle}" />
+    <!--#endregion-->
+</ResourceDictionary>

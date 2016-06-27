@@ -94,10 +94,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles.NumericUpDown.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\MahAppsConfirmWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +110,16 @@
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Code</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>    
+    <Page Include="Styles.CheckBox.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.ComboBox.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.DataGrid.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
@@ -126,6 +132,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.GroupBox.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.Image.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,7 +156,22 @@
       <SubType>Code</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.NumericUpDown.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles.Pickers.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.ProgressBar.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.RadioButton.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +181,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.Slider.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>    
     <Page Include="Styles.TextBlock.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.TextBox.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.ToggleSwitch.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.Window.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
