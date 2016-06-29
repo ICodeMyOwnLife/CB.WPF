@@ -5,7 +5,10 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.label.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="LabelStyle" TargetType="Label" BasedOn="{StaticResource MetroLabel}" />
+    <Style x:Key="LabelStyle" TargetType="Label" BasedOn="{StaticResource MetroLabel}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMarin}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
 
     <Style TargetType="Label" BasedOn="{StaticResource LabelStyle}" />
 </ResourceDictionary>
