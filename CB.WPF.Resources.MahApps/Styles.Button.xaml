@@ -122,6 +122,7 @@
     <!--#region Button Style-->
     <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+        <Setter Property="MinWidth" Value="{DynamicResource ButtonMinWidth}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 

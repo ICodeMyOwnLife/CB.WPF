@@ -89,13 +89,13 @@
     </Style>
 
     <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
-        <Setter Property="Header" Value="Theme" />
+        <Setter Property="Header" Value="_Theme" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource AppThemeChildMenuItemStyle}" />
         <Setter Property="ItemsSource" Value="{x:Static mae:MahAppsThemeManager.AppsThemes}" />
     </Style>
 
     <Style x:Key="AccentMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
-        <Setter Property="Header" Value="Accent" />
+        <Setter Property="Header" Value="_Accent" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource AccentChildMenuItemStyle}" />
         <Setter Property="ItemsSource" Value="{x:Static mae:MahAppsThemeManager.Accents}" />
     </Style>

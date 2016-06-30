@@ -25,6 +25,7 @@
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.TextBlock.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.TextBox.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.ToggleSwitch.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.ToolTip.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Window.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <!--#endregion-->

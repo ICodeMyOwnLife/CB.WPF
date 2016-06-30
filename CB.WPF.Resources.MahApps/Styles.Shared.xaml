@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
+    <sys:Double x:Key="ButtonMinWidth">70</sys:Double>
+    
     <sys:Double x:Key="NormalControlSize">16</sys:Double>
 
     <sys:Double x:Key="SmallControlSize">8</sys:Double>
@@ -16,4 +18,12 @@
     <Thickness x:Key="NormalMargin.Left" Left="{StaticResource MarginSize}" />
 
     <Thickness x:Key="NormalMargin.Right" Right="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.LeftRight" Left="{StaticResource MarginSize}" Right="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.Top" Top="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.Bottom" Bottom="{StaticResource MarginSize}" />
+
+    <Thickness x:Key="NormalMargin.TopBottom" Top="{StaticResource MarginSize}" Bottom="{StaticResource MarginSize}" />
 </ResourceDictionary>
