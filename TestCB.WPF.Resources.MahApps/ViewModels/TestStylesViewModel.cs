@@ -8,7 +8,6 @@ using System.Windows.Input;
 using CB.Model.Prism;
 using CB.Prism.Interactivity;
 using Microsoft.Practices.Prism.Commands;
-using Prism.Interactivity.InteractionRequest;
 using TestMahAppsResources.Models;
 using ProgressState = TestMahAppsResources.Models.ProgressState;
 
@@ -81,7 +80,7 @@ namespace TestMahAppsResources.ViewModels
         /*public ConfirmationInteractionRequest<IConfirmation> FileRequest { get; } =
             new ConfirmationInteractionRequest<IConfirmation>();*/
 
-        public InteractionContextRequest<IConfirmContext> FileRequest { get; } = new InteractionContextRequest<IConfirmContext>();
+        public CommonInteractionRequest FileRequest { get; } = new CommonInteractionRequest();
 
         public ObservableCollection<Person> People
         {
