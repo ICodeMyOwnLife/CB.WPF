@@ -17,6 +17,3 @@ namespace CB.WPF.MahAppsExtension
         #endregion
     }
 }
-
-
-//TODO: Bring to CB.WPF.ExtendedMahApps

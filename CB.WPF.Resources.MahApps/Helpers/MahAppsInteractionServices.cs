@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Interactivity;
 using CB.Prism.Interactivity;
@@ -40,7 +41,14 @@ namespace CB.WPF.MahAppsResources
         {
             if (requestManager == null) return;
 
-            //UNDONE!
+            var triggers = Interaction.GetTriggers(obj);
+            var removedTriggers = triggers.OfType<EventTriggerBase>().Where(
+                eventTrigger => eventTrigger.SourceObject == requestManager.ConfirmRequestProvider.Request ||
+                                eventTrigger.SourceObject == requestManager.FileRequestProvider.Request ||
+                                eventTrigger.SourceObject == requestManager.NotifyRequestProvider.Request ||
+                                eventTrigger.SourceObject == requestManager.WindowRequestProvider.Request).ToArray();
+
+            foreach (var eventTrigger in removedTriggers) triggers.Remove(eventTrigger);
         }
         #endregion
 
