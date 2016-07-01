@@ -80,7 +80,6 @@
   <ItemGroup>
     <Compile Include="Accent.cs" />
     <Compile Include="AppTheme.cs" />
-    <Compile Include="AttachedProperties\MetroWindowServices.cs" />
     <Compile Include="Converters\ChosenMahAppsThemeConverter.cs" />
     <Compile Include="Converters\ChosenAccentConverter.cs" />
     <Compile Include="Converters\ChosenAppThemeConverter.cs" />
