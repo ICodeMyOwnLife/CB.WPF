@@ -65,6 +65,7 @@
 
     <Style x:Key="MenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
         <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="MaxHeight" Value="32" />
     </Style>
 
     <Style TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}" />

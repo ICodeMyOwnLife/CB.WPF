@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Wpf.Controls", "CB.Wpf.Controls\CB.Wpf.Controls.csproj", "{40DDC946-CD13-4734-990F-FBFF6914652E}"
 EndProject
@@ -46,6 +46,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.WPF.Common", "CB.WPF.Common\CB.WPF.Common.csproj", "{A9505DB9-6B23-4A98-B20A-85B66BB799C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Configuration.Common", "..\CB.Configuration\CB.Configuration.Common\CB.Configuration.Common.csproj", "{9F2166AE-F09B-49C1-9B6D-2EE861593A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.WPF.NotificationIcon", "CB.WPF.NotificationIcon\CB.WPF.NotificationIcon.csproj", "{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.Interactivity", "..\CB.Xaml\CB.Xaml.Interactivity\CB.Xaml.Interactivity.csproj", "{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +235,22 @@ Global
 		{9F2166AE-F09B-49C1-9B6D-2EE861593A73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F2166AE-F09B-49C1-9B6D-2EE861593A73}.Release|x64.ActiveCfg = Release|Any CPU
 		{9F2166AE-F09B-49C1-9B6D-2EE861593A73}.Release|x64.Build.0 = Release|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Debug|x64.Build.0 = Debug|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Release|x64.ActiveCfg = Release|Any CPU
+		{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}.Release|x64.Build.0 = Release|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Debug|x64.Build.0 = Debug|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|x64.ActiveCfg = Release|Any CPU
+		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

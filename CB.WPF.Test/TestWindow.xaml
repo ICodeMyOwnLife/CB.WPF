@@ -9,7 +9,8 @@
                  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                  xmlns:prm="http://prismlibrary.com/"
                  mc:Ignorable="d"
-                 Title="Test Window" Width="640" SizeToContent="Height" d:DataContext="{d:DesignInstance local:TestViewModel}"
+                 Title="Test Window" Width="640" SizeToContent="Height"
+                 d:DataContext="{d:DesignInstance local:TestViewModel}"
                  TitleAlignment="Center" TitleCharacterCasing="Normal" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -23,11 +24,12 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Thickness x:Key="NormalMargin">12</Thickness>
-            
+
             <Style TargetType="Button" BasedOn="{StaticResource MetroAccentButton}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
             </Style>
-            
+
             <Style TargetType="DataGrid" BasedOn="{StaticResource AzureDataGrid}">
                 <Setter Property="Margin" Value="{StaticResource NormalMargin}" />
             </Style>
@@ -91,11 +93,11 @@
                 <DataGridTemplateColumn Header="Window Type" Width="*" SortMemberPath="Name"
                                         CellTemplate="{StaticResource WindowNameColumn}" />
 
-                <DataGridTemplateColumn Header="Command" Width="100"
+                <DataGridTemplateColumn Header="Command" Width="SizeToCells"
                                         HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowWindowButtonColumn}" />
 
-                <DataGridTemplateColumn Header="Command" Width="120"
+                <DataGridTemplateColumn Header="Command" Width="SizeToCells"
                                         HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowDialogWindowButtonColumn}" />
             </DataGrid.Columns>
