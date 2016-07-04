@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\Application\HealthyProgrammerCOOL\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -63,9 +63,6 @@
     <Compile Include="SymbolBallonNotification.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\CB.Prism\CB.Prism.Interactivity\CB.Prism.Interactivity.csproj">
       <Project>{640c072b-f368-4d76-9969-9c6bfe4070d3}</Project>
       <Name>CB.Prism.Interactivity</Name>
@@ -74,6 +71,9 @@
       <Project>{0c28cc8c-9e4d-4113-bfb2-0119f2a25d7e}</Project>
       <Name>CB.Xaml.Interactivity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
