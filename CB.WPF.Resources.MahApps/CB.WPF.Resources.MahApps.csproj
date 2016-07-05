@@ -39,8 +39,8 @@
     <Reference Include="CB.WPF.MahAppsExtension">
       <HintPath>..\CB.WPF.MahAppsExtension\bin\Debug\CB.WPF.MahAppsExtension.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.3.0.162, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA162\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.3.0.173, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Projects\Tests\TestWpf\packages\MahApps.Metro.1.3.0-ALPHA173\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -58,7 +58,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA162\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\Tests\TestWpf\packages\MahApps.Metro.1.3.0-ALPHA173\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -139,6 +139,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.Expander.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles.GridSplitter.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
@@ -174,6 +179,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.PasswordBox.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles.Pickers.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
@@ -189,12 +199,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.Scroll.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles.Shared.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.Slider.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.StatusBar.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.TabControl.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +240,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles.ToolTip.xaml">
+      <DependentUpon>Styles.xaml</DependentUpon>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.TreeView.xaml">
       <DependentUpon>Styles.xaml</DependentUpon>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+
+    <!--#region Embeded resources-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.tabcontrol.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!--#endregion-->
+
+
+    <Style x:Key="TabItemStyle" TargetType="TabItem" BasedOn="{StaticResource MetroTabItem}" />
+
+    <Style TargetType="TabItem" BasedOn="{StaticResource TabItemStyle}" />
+
+    <Style x:Key="TabControlStyle" TargetType="TabControl" BasedOn="{StaticResource MetroTabControl}" />
+
+    <Style TargetType="TabControl" BasedOn="{StaticResource TabControlStyle}" />
+
+    <Style x:Key="MetroAnimatedTabControlStyle" TargetType="mah:MetroAnimatedTabControl" />
+
+    <Style TargetType="mah:MetroAnimatedTabControl" BasedOn="{StaticResource MetroAnimatedTabControlStyle}" />
+
+    <Style x:Key="MetroAnimatedSingleRowTabControlStyle" TargetType="mah:MetroAnimatedSingleRowTabControl" />
+
+    <Style TargetType="mah:MetroAnimatedSingleRowTabControl"
+           BasedOn="{StaticResource MetroAnimatedSingleRowTabControlStyle}" />
+</ResourceDictionary>

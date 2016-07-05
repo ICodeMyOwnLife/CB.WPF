@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Embeded resources-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.statusbar.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <!--#endregion-->
+
+    <Style x:Key="StatusBarStyle" TargetType="StatusBar" BasedOn="{StaticResource MetroStatusBar}" />
+
+    <Style TargetType="StatusBar" BasedOn="{StaticResource StatusBarStyle}" />
+
+    <Style x:Key="StatusBarItemStyle" TargetType="StatusBarItem" BasedOn="{StaticResource MetroStatusBarItem}" />
+
+    <Style TargetType="StatusBarItem" BasedOn="{StaticResource StatusBarItemStyle}" />
+
+    <Style x:Key="StatusBarSeparatorStyle" TargetType="Separator" BasedOn="{StaticResource MetroStatusBarSeparator}" />
+</ResourceDictionary>

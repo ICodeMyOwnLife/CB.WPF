@@ -6,6 +6,14 @@
         <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.xaml" />-->
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/sizes.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.page.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/validationerrortemplate.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.toolbar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/themes/windowbuttoncommands.xaml" />
+
+        <!--  Theme styles with keys  -->
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Shared.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Button.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.CheckBox.xaml" />
