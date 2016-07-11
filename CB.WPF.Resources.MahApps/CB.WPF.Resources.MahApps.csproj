@@ -269,7 +269,7 @@
       <Name>CB.Prism.Interactivity</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.AttachedProperties\CB.Xaml.AttachedProperties.csproj">
-      <Project>{1CCB7F4E-228A-4A8E-A211-A032C9C8767B}</Project>
+      <Project>{1ccb7f4e-228a-4a8e-a211-a032c9c8767b}</Project>
       <Name>CB.Xaml.AttachedProperties</Name>
     </ProjectReference>
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
