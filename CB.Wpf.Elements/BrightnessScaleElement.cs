@@ -76,7 +76,7 @@ namespace CB.Wpf.Elements
 
         protected override void DrawThumb(DrawingContext drawingContext)
         {
-            var thumbPen = ColorHelper.CalculateBrightness(SelectedColor) > 0.5 ? _blackPen : _whitePen;
+            var thumbPen = MediaHelper.CalculateBrightness(SelectedColor) > 0.5 ? _blackPen : _whitePen;
             drawingContext.DrawEllipse(new SolidColorBrush(SelectedColor), thumbPen, CreateThumbPoint(), THUMB_RADIUS,
                 THUMB_RADIUS);
         }
@@ -92,7 +92,7 @@ namespace CB.Wpf.Elements
         protected override void SetMouseOffset()
         {
             double offsetX, offsetY;
-            var rootColor = LinearBrushHelper.GetRootColor(SelectedColor, out offsetX, out offsetY);
+            var rootColor = SelectedColor.GetRootColor(out offsetX, out offsetY);
             _directSetRootColor = true;
             RootColor = rootColor ?? DefaultRootColor;
             _directSetRootColor = false;
