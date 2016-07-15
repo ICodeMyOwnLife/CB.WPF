@@ -29,6 +29,7 @@
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Pickers.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.ProgressBar.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.RadioButton.xaml" />
+        <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Scroll.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.Slider.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.TextBlock.xaml" />
         <ResourceDictionary Source="/CB.WPF.Resources.MahApps;component/Styles.TextBox.xaml" />
