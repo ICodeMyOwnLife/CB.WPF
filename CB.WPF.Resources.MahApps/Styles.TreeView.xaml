@@ -8,14 +8,14 @@
     <!--#endregion-->
 
     <Style x:Key="TreeViewStyle" TargetType="TreeView" BasedOn="{StaticResource MetroTreeView}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MetroTreeViewItem}" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="TreeView" BasedOn="{StaticResource TreeViewStyle}" />
 
     <Style x:Key="TreeViewStyle.Virtualized" TargetType="TreeView" BasedOn="{StaticResource VirtualisedMetroTreeView}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource MetroTreeViewItem}" />
         <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 </ResourceDictionary>
