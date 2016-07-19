@@ -14,18 +14,40 @@
 
     <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
 
-    <Style x:Key="TextBlockStyle.LeftAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+    <Style x:Key="TextBlockStyle.HasMargin" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.HasMargin.Stretch" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyle.HasMargin}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.LeftAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle.HasMargin}">
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
 
-    <Style x:Key="TextBlockStyle.RightAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+    <Style x:Key="TextBlockStyle.RightAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle.HasMargin}">
         <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
     </Style>
 
-    <Style x:Key="TextBlockStyle.CenterAlign" TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}">
+    <Style x:Key="TextBlockStyle.CenterAlign" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyle.HasMargin}">
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Margin" Value="{DynamicResource NormalMargin}" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.StretchLeftAlign" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyle.HasMargin.Stretch}">
+        <Setter Property="TextAlignment" Value="Left" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.StretchRightAlign" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyle.HasMargin.Stretch}">
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+
+    <Style x:Key="TextBlockStyle.StretchCenterAlign" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyle.HasMargin.Stretch}">
+        <Setter Property="TextAlignment" Value="Center" />
     </Style>
 </ResourceDictionary>
