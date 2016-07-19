@@ -1,0 +1,54 @@
+﻿<mah:MetroWindow x:Class="TestCB.Wpf.NotificationIcon.Views.TestLoopWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:vmd="clr-namespace:TestCB.Wpf.NotificationIcon.ViewModels"
+                 xmlns:xaml="http://wpf.cb.com/xaml"
+                 mc:Ignorable="d"
+                 Title="TestLoopWindow" Width="480" SizeToContent="Height" Style="{StaticResource MetroWindowStyle}"
+                 WindowStartupLocation="CenterScreen"
+                 xaml:MahAppsInteractionServices.RequestManager="{Binding RequestManager}">
+
+    <Window.Resources>
+        <vmd:TestLoopViewModel x:Key="MainViewModel" />
+    </Window.Resources>
+
+    <Window.DataContext>
+        <StaticResource ResourceKey="MainViewModel" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <xaml:NotifyIcon x:Name="notifyIcon" />
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Title:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Message:" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Message}" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Symbol" />
+        <ComboBox Grid.Row="2" Grid.Column="1" xaml:SelectorServices.SelectedEnum="{Binding Symbol}" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Sound source:" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SoundSource}" />
+
+        <CheckBox Grid.Row="4" Grid.Column="0" Content="Loop?" IsChecked="{Binding Loop, Mode=TwoWay}" />
+
+        <Button Grid.Row="4" Grid.Column="1" Content="Notify" Command="{Binding NotifyCommand}" />
+    </Grid>
+</mah:MetroWindow>

@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.WPF.NotificationIcon", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CB.Xaml.Interactivity", "..\CB.Xaml\CB.Xaml.Interactivity\CB.Xaml.Interactivity.csproj", "{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCB.Wpf.NotificationIcon", "TestCB.Wpf.NotificationIcon\TestCB.Wpf.NotificationIcon.csproj", "{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,14 @@ Global
 		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|x64.ActiveCfg = Release|Any CPU
 		{0C28CC8C-9E4D-4113-BFB2-0119F2A25D7E}.Release|x64.Build.0 = Release|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Debug|x64.Build.0 = Debug|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Release|x64.ActiveCfg = Release|Any CPU
+		{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,55 @@
+﻿<mah:MetroWindow x:Class="MahApps.Extended.Application.TestMahAppsToastWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:viewModels="clr-namespace:TestMahAppsResources.ViewModels"
+                 mc:Ignorable="d"
+                 Title="TestMahAppsToastWindow" Width="480" SizeToContent="Height" Style="{StaticResource MetroWindowStyle}"
+                 WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <viewModels:TestMahAppsToastViewModel x:Key="MainViewModel" />
+    </Window.Resources>
+
+    <Window.DataContext>
+        <StaticResource ResourceKey="MainViewModel" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Content" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Content}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Icon source" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding IconSource}" AllowDrop="True" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Duration" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Duration}" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Commands" />
+        <TextBox Grid.Row="3" Grid.Column="1">
+            <UIElement.InputBindings>
+                <KeyBinding Key="Space" Modifiers="Control+Shift" Command="{Binding AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=TextBox}, Path=Text}"></KeyBinding>
+            </UIElement.InputBindings>
+        </TextBox>
+        
+        <ListBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Commands}"></ListBox>
+
+        <Button Grid.Row="5" Grid.Column="0" Content="Show" Command="{Binding ShowCommand}" />
+    </Grid>
+</mah:MetroWindow>

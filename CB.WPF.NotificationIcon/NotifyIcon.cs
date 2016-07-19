@@ -2,18 +2,25 @@
 using System.Drawing;
 using System.Windows;
 using System.Windows.Media;
+using CB.Prism.Interactivity;
 using Hardcodet.Wpf.TaskbarNotification;
+using BalloonIcon = CB.Prism.Interactivity.BalloonIcon;
 
 
 namespace CB.WPF.NotificationIcon
 {
     public class NotifyIcon: TaskbarIcon, IShowBalloonTip
     {
-        #region Dependency Properties
+        #region Fields
         public static readonly DependencyProperty CloseWhenParentWindowClosedProperty = DependencyProperty.Register(
             nameof(CloseWhenParentWindowClosed), typeof(bool), typeof(NotifyIcon),
             new PropertyMetadata(false, OnCloseWhenParentWindowClosedChanged));
 
+        private static Action _reshowAction;
+        #endregion
+
+
+        #region Dependency Properties
         public bool CloseWhenParentWindowClosed
         {
             get { return (bool)GetValue(CloseWhenParentWindowClosedProperty); }
@@ -26,7 +33,7 @@ namespace CB.WPF.NotificationIcon
         public void ShowBalloonTip(string title, string message, BalloonIcon symbol, string soundSource = null)
         {
             if (!string.IsNullOrEmpty(soundSource)) SetSoundPlaying(soundSource);
-            base.ShowBalloonTip(title, message, symbol);
+            ShowBalloonTip(title, message, MapBalloonIcon(symbol));
         }
 
         public void ShowBalloonTip(string title, string message, Icon customIcon, bool largeIcon = false,
@@ -35,12 +42,37 @@ namespace CB.WPF.NotificationIcon
             if (!string.IsNullOrEmpty(soundSource)) SetSoundPlaying(soundSource);
             base.ShowBalloonTip(title, message, customIcon, largeIcon);
         }
+
+        public void ShowBalloonTip(string title, string message, BalloonIcon symbol, string soundSource, bool loop)
+        {
+            if (loop)
+            {
+                _reshowAction = () => ShowBalloonTip(title, message, symbol, soundSource);
+                TrayBalloonTipClosed -= NotifyIcon_TrayBalloonTipClosed;
+                TrayBalloonTipClosed += NotifyIcon_TrayBalloonTipClosed;
+            }
+            ShowBalloonTip(title, message, symbol, soundSource);
+        }
+
+        public void ShowBalloonTip(string title, string message, Icon customIcon, bool largeIcon, string soundSource,
+            bool loop)
+        {
+            if (loop)
+            {
+                _reshowAction = () => ShowBalloonTip(title, message, customIcon, largeIcon, soundSource);
+                TrayBalloonTipClosed -= NotifyIcon_TrayBalloonTipClosed;
+                TrayBalloonTipClosed += NotifyIcon_TrayBalloonTipClosed;
+            }
+            ShowBalloonTip(title, message, customIcon, largeIcon, soundSource);
+        }
         #endregion
 
 
         #region Event Handlers
-        private void ParentWindow_Closed(object sender, EventArgs e)
-            => Visibility = Visibility.Hidden;
+        private static void NotifyIcon_TrayBalloonTipClosed(object sender, RoutedEventArgs e)
+            => _reshowAction();
+
+        private void ParentWindow_Closed(object sender, EventArgs e) => Visibility = Visibility.Hidden;
         #endregion
 
 
@@ -51,6 +83,23 @@ namespace CB.WPF.NotificationIcon
             mediaPlayer.MediaEnded += (sender, args) => mediaPlayer.Position = TimeSpan.Zero;
             mediaPlayer.Open(new Uri(soundSource, UriKind.RelativeOrAbsolute));
             return mediaPlayer;
+        }
+
+        private Hardcodet.Wpf.TaskbarNotification.BalloonIcon MapBalloonIcon(BalloonIcon symbol)
+        {
+            switch (symbol)
+            {
+                case BalloonIcon.None:
+                    return Hardcodet.Wpf.TaskbarNotification.BalloonIcon.None;
+                case BalloonIcon.Error:
+                    return Hardcodet.Wpf.TaskbarNotification.BalloonIcon.Error;
+                case BalloonIcon.Info:
+                    return Hardcodet.Wpf.TaskbarNotification.BalloonIcon.Info;
+                case BalloonIcon.Warning:
+                    return Hardcodet.Wpf.TaskbarNotification.BalloonIcon.Warning;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(symbol), symbol, null);
+            }
         }
 
         private static void OnCloseWhenParentWindowClosedChanged(DependencyObject d,

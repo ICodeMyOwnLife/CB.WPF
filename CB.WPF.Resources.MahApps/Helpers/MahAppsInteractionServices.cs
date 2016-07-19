@@ -17,10 +17,12 @@ namespace CB.WPF.MahAppsResources
         private static void RegisterRequestManager(DependencyObject obj, RequestManager requestManager)
         {
             var triggers = Interaction.GetTriggers(obj);
+
             triggers.Add(CreateConfirmTrigger(requestManager));
             triggers.Add(CreateNotifyTrigger(requestManager));
             triggers.Add(CreateFileTrigger(requestManager));
             triggers.Add(new WindowRequestTrigger { SourceObject = requestManager.WindowRequestProvider.Request });
+            triggers.Add(CreateBalloonNotifyTrigger(requestManager));
         }
 
         public static readonly DependencyProperty RequestManagerProperty = DependencyProperty.RegisterAttached(
@@ -46,7 +48,9 @@ namespace CB.WPF.MahAppsResources
                 eventTrigger => eventTrigger.SourceObject == requestManager.ConfirmRequestProvider.Request ||
                                 eventTrigger.SourceObject == requestManager.FileRequestProvider.Request ||
                                 eventTrigger.SourceObject == requestManager.NotifyRequestProvider.Request ||
-                                eventTrigger.SourceObject == requestManager.WindowRequestProvider.Request).ToArray();
+                                eventTrigger.SourceObject == requestManager.WindowRequestProvider.Request ||
+                                eventTrigger.SourceObject == requestManager.BalloonNotifyRequestProvider.Request)
+                                          .ToArray();
 
             foreach (var eventTrigger in removedTriggers) triggers.Remove(eventTrigger);
         }
@@ -54,6 +58,19 @@ namespace CB.WPF.MahAppsResources
 
 
         #region Implementation
+        private static TriggerBase CreateBalloonNotifyTrigger(RequestManager requestManager)
+        {
+            var balloonNotifyTrigger = new InteractionRequestTrigger
+            {
+                SourceObject = requestManager.BalloonNotifyRequestProvider.Request
+            };
+            balloonNotifyTrigger.Actions.Add(new ShowNotificationAction
+            {
+                TargetName = requestManager.BalloonNotifyName
+            });
+            return balloonNotifyTrigger;
+        }
+
         private static TriggerBase CreateConfirmTrigger(RequestManager requestManager)
         {
             var confirmTrigger = new InteractionRequestTrigger

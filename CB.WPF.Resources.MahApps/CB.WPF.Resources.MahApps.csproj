@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\MahAppsInteractionServices.cs" />
+    <Compile Include="MahAppsToast.cs" />
     <Compile Include="Windows\MahAppsConfirmWindow.xaml.cs">
       <DependentUpon>MahAppsConfirmWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +95,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Windows\MahAppsToastWindow.xaml.cs">
+      <DependentUpon>MahAppsToastWindow.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -254,6 +258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\MahAppsToastWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
@@ -272,11 +280,16 @@
       <Project>{1ccb7f4e-228a-4a8e-a211-a032c9c8767b}</Project>
       <Name>CB.Xaml.AttachedProperties</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.Interactivity\CB.Xaml.Interactivity.csproj">
+      <Project>{0c28cc8c-9e4d-4113-bfb2-0119f2a25d7e}</Project>
+      <Name>CB.Xaml.Interactivity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

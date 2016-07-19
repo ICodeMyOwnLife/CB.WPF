@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F2CB9036-1B48-4763-B618-56B7D446E9B1}</ProjectGuid>
+    <ProjectGuid>{A0A4E9F1-A4D8-42EC-81CB-6B2196CB5707}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestCB.WPF.Controls</RootNamespace>
-    <AssemblyName>TestCB.WPF.Controls</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>TestCB.Wpf.NotificationIcon</RootNamespace>
+    <AssemblyName>TestCB.Wpf.NotificationIcon</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,24 +34,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.3.0.176, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA176\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Mvvm, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.SharedInterfaces, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA176\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -62,7 +58,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -79,14 +74,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DesignViewModels\TestProgressButtonDesignViewModel.cs" />
-    <Compile Include="ViewModels\ProgressTaskViewModel.cs" />
-    <Compile Include="ViewModels\TestProgressButtonViewModel.cs" />
-    <Compile Include="Views\TestDialogContentControlWindow.xaml.cs">
-      <DependentUpon>TestDialogContentControlWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TestProgressButtonWindow.xaml.cs">
-      <DependentUpon>TestProgressButtonWindow.xaml</DependentUpon>
+    <Compile Include="ViewModels\TestLoopViewModel.cs" />
+    <Compile Include="Views\TestLoopWindow.xaml.cs">
+      <DependentUpon>TestLoopWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -118,35 +108,65 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\TestDialogContentControlWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TestProgressButtonWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\CB.Configuration\CB.Configuration.Common\CB.Configuration.Common.csproj">
+      <Project>{9f2166ae-f09b-49c1-9b6d-2ee861593a73}</Project>
+      <Name>CB.Configuration.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Dynamic\CB.Dynamic.CompilerServices\CB.Dynamic.CompilerServices.csproj">
+      <Project>{e1091216-efe2-4065-b66d-4f90346b5991}</Project>
+      <Name>CB.Dynamic.CompilerServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Media\CB.Media.Brushes\CB.Media.Brushes.csproj">
+      <Project>{61a1fdd6-1482-4d6c-a276-51d4124ec53b}</Project>
+      <Name>CB.Media.Brushes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CB.Model\CB.Model.Common\CB.Model.Common.csproj">
-      <Project>{33A5DF99-1312-4023-A6EF-EABB9848F5A6}</Project>
+      <Project>{33a5df99-1312-4023-a6ef-eabb9848f5a6}</Project>
       <Name>CB.Model.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\CB.Model\CB.Model.Prism\CB.Model.Prism.csproj">
-      <Project>{6A52CAE9-6F3E-4A20-96EB-0E6116A6709C}</Project>
+      <Project>{6a52cae9-6f3e-4a20-96eb-0e6116a6709c}</Project>
       <Name>CB.Model.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Prism\CB.Prism.Interactivity\CB.Prism.Interactivity.csproj">
+      <Project>{640C072B-F368-4D76-9969-9C6BFE4070D3}</Project>
+      <Name>CB.Prism.Interactivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.Common\CB.WPF.Common.csproj">
+      <Project>{a9505db9-6b23-4a98-b20a-85b66bb799c4}</Project>
+      <Name>CB.WPF.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.Wpf.Elements\CB.Wpf.Elements.csproj">
+      <Project>{49a228f3-5a12-42ac-93f1-5d10377ed89d}</Project>
+      <Name>CB.Wpf.Elements</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.WPF.MahAppsExtension\CB.WPF.MahAppsExtension.csproj">
       <Project>{29bf73a0-6a4d-484b-83aa-5e5e13473a5a}</Project>
       <Name>CB.WPF.MahAppsExtension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.NotificationIcon\CB.WPF.NotificationIcon.csproj">
+      <Project>{7E00CC38-DDC5-44E3-9E25-57BB7AA99137}</Project>
+      <Name>CB.WPF.NotificationIcon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.WPF.Resources.MahApps\CB.WPF.Resources.MahApps.csproj">
       <Project>{88845a0d-9b1f-4d1a-92d3-0c8d97e4d747}</Project>
       <Name>CB.WPF.Resources.MahApps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.AttachedProperties\CB.Xaml.AttachedProperties.csproj">
+      <Project>{1ccb7f4e-228a-4a8e-a211-a032c9c8767b}</Project>
+      <Name>CB.Xaml.AttachedProperties</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.Commands\CB.Xaml.Commands.csproj">
+      <Project>{c5dc3209-4a92-4243-8188-adbd4fa87fc3}</Project>
+      <Name>CB.Xaml.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CB.Xaml\CB.Xaml.ValueConverters\CB.Xaml.ValueConverters.csproj">
+      <Project>{3c46f9a4-7a8b-4588-872f-60b36e471fc5}</Project>
+      <Name>CB.Xaml.ValueConverters</Name>
     </ProjectReference>
     <ProjectReference Include="..\CB.WPF.Test\CB.WPF.Test.csproj">
       <Project>{B1E46368-347B-4787-B663-2E1BDEDAD749}</Project>
@@ -154,7 +174,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\TestLoopWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
