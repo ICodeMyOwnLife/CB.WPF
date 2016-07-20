@@ -18,6 +18,19 @@ namespace CB.WPF.NotificationIcon
 
         private static MediaPlayer _mediaPlayer;
         private static Action _reshowAction;
+        private bool _loop;
+        private bool _looping;
+        private string _soundSource;
+        #endregion
+
+
+        #region  Constructors & Destructor
+        public NotifyIcon()
+        {
+            TrayBalloonTipClicked += NotifyIcon_TrayBalloonTipClicked;
+            TrayBalloonTipClosed += NotifyIcon_TrayBalloonTipClosed;
+            TrayBalloonTipShown += NotifyIcon_TrayBalloonTipShown;
+        }
         #endregion
 
 
@@ -30,55 +43,85 @@ namespace CB.WPF.NotificationIcon
         #endregion
 
 
+        #region Events
+        public event EventHandler BalloonTipClosed;
+        #endregion
+
+
         #region Methods
         public void ShowBalloonTip(string title, string message, BalloonIcon symbol, string soundSource = null)
-        {
+            => ShowBalloonTip(title, message, symbol, soundSource, false);
+
+        /*{
             if (!string.IsNullOrEmpty(soundSource)) SetSoundPlaying(soundSource);
+            _soundSource = soundSource;
             ShowBalloonTip(title, message, MapBalloonIcon(symbol));
-        }
+        }*/
 
         public void ShowBalloonTip(string title, string message, Icon customIcon, bool largeIcon = false,
             string soundSource = null)
-        {
+            => ShowBalloonTip(title, message, customIcon, largeIcon, soundSource, false);
+
+        /*{
             if (!string.IsNullOrEmpty(soundSource)) SetSoundPlaying(soundSource);
+            _soundSource = soundSource;
             base.ShowBalloonTip(title, message, customIcon, largeIcon);
-        }
+        }*/
 
         public void ShowBalloonTip(string title, string message, BalloonIcon symbol, string soundSource, bool loop)
-        {
-            if (loop)
-            {
-                _reshowAction = () => ShowBalloonTip(title, message, symbol, soundSource);
-                TrayBalloonTipClosed -= NotifyIcon_TrayBalloonTipClosed;
-                TrayBalloonTipClosed += NotifyIcon_TrayBalloonTipClosed;
-            }
-            ShowBalloonTip(title, message, symbol, soundSource);
-        }
+            => ShowBalloonTip(title, message, symbol, soundSource, loop, false);
 
         public void ShowBalloonTip(string title, string message, Icon customIcon, bool largeIcon, string soundSource,
             bool loop)
+            => ShowBalloonTip(title, message, customIcon, largeIcon, soundSource, loop, false);
+
+        public void ShowBalloonTip(string title, string message, BalloonIcon symbol, string soundSource, bool loop,
+            bool looping)
         {
+            _loop = loop;
+            _looping = looping;
+            _soundSource = soundSource;
+
             if (loop)
             {
-                _reshowAction = () => ShowBalloonTip(title, message, customIcon, largeIcon, soundSource);
-                TrayBalloonTipClosed -= NotifyIcon_TrayBalloonTipClosed;
-                TrayBalloonTipClosed += NotifyIcon_TrayBalloonTipClosed;
+                _reshowAction = () => ShowBalloonTip(title, message, symbol, soundSource, true, true);
             }
-            ShowBalloonTip(title, message, customIcon, largeIcon, soundSource);
+
+            base.ShowBalloonTip(title, message, MapBalloonIcon(symbol));
         }
         #endregion
 
 
         #region Event Handlers
-        private static void NotifyIcon_TrayBalloonTipClosed(object sender, RoutedEventArgs e)
-            => _reshowAction();
+        private void NotifyIcon_TrayBalloonTipClicked(object sender, RoutedEventArgs e)
+            => OnBalloonTipClosed();
+
+        private void NotifyIcon_TrayBalloonTipClosed(object sender, RoutedEventArgs e)
+        {
+            if (_loop) _reshowAction();
+            else OnBalloonTipClosed();
+        }
+
+        private void NotifyIcon_TrayBalloonTipShown(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_soundSource) || _looping) return;
+
+            if (_mediaPlayer == null)
+            {
+                _mediaPlayer = new MediaPlayer();
+                _mediaPlayer.MediaEnded += (s, args) => _mediaPlayer.Position = TimeSpan.Zero;
+            }
+
+            _mediaPlayer.Open(new Uri(_soundSource, UriKind.RelativeOrAbsolute));
+            _mediaPlayer.Play();
+        }
 
         private void ParentWindow_Closed(object sender, EventArgs e) => Visibility = Visibility.Hidden;
         #endregion
 
 
         #region Implementation
-        private static void InitializeMediaPlayer(string soundSource)
+        /*private static void InitializeMediaPlayer(string soundSource)
         {
             if (_mediaPlayer == null)
             {
@@ -86,7 +129,7 @@ namespace CB.WPF.NotificationIcon
                 _mediaPlayer.MediaEnded += (sender, args) => _mediaPlayer.Position = TimeSpan.Zero;
             }
             _mediaPlayer.Open(new Uri(soundSource, UriKind.RelativeOrAbsolute));
-        }
+        }*/
 
         private Hardcodet.Wpf.TaskbarNotification.BalloonIcon MapBalloonIcon(BalloonIcon symbol)
         {
@@ -105,6 +148,12 @@ namespace CB.WPF.NotificationIcon
             }
         }
 
+        protected virtual void OnBalloonTipClosed()
+        {
+            _mediaPlayer?.Stop();
+            BalloonTipClosed?.Invoke(this, EventArgs.Empty);
+        }
+
         private static void OnCloseWhenParentWindowClosedChanged(DependencyObject d,
             DependencyPropertyChangedEventArgs args)
             => ((NotifyIcon)d).OnCloseWhenParentWindowClosedChanged((bool)args.OldValue, (bool)args.NewValue);
@@ -119,7 +168,24 @@ namespace CB.WPF.NotificationIcon
             else parentWindow.Closed -= ParentWindow_Closed;
         }
 
-        private void SetSoundPlaying(string soundSource)
+        private void ShowBalloonTip(string title, string message, Icon customIcon, bool largeIcon, string soundSource,
+            bool loop, bool looping)
+        {
+            _loop = loop;
+            _looping = looping;
+            _soundSource = soundSource;
+
+            if (loop)
+            {
+                _reshowAction = () => ShowBalloonTip(title, message, customIcon, largeIcon, soundSource, true, true);
+            }
+
+            base.ShowBalloonTip(title, message, customIcon, largeIcon);
+        }
+        #endregion
+
+
+        /*private void SetSoundPlaying(string soundSource)
         {
             InitializeMediaPlayer(soundSource);
 
@@ -140,7 +206,6 @@ namespace CB.WPF.NotificationIcon
             };
             TrayBalloonTipClicked += closedHandler;
             TrayBalloonTipClosed += closedHandler;
-        }
-        #endregion
+        }*/
     }
 }
