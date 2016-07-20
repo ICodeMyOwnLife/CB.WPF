@@ -16,6 +16,7 @@ namespace CB.WPF.NotificationIcon
             nameof(CloseWhenParentWindowClosed), typeof(bool), typeof(NotifyIcon),
             new PropertyMetadata(false, OnCloseWhenParentWindowClosedChanged));
 
+        private static MediaPlayer _mediaPlayer;
         private static Action _reshowAction;
         #endregion
 
@@ -77,12 +78,14 @@ namespace CB.WPF.NotificationIcon
 
 
         #region Implementation
-        private static MediaPlayer CreateMediaPlayer(string soundSource)
+        private static void InitializeMediaPlayer(string soundSource)
         {
-            var mediaPlayer = new MediaPlayer();
-            mediaPlayer.MediaEnded += (sender, args) => mediaPlayer.Position = TimeSpan.Zero;
-            mediaPlayer.Open(new Uri(soundSource, UriKind.RelativeOrAbsolute));
-            return mediaPlayer;
+            if (_mediaPlayer == null)
+            {
+                _mediaPlayer = new MediaPlayer();
+                _mediaPlayer.MediaEnded += (sender, args) => _mediaPlayer.Position = TimeSpan.Zero;
+            }
+            _mediaPlayer.Open(new Uri(soundSource, UriKind.RelativeOrAbsolute));
         }
 
         private Hardcodet.Wpf.TaskbarNotification.BalloonIcon MapBalloonIcon(BalloonIcon symbol)
@@ -118,12 +121,12 @@ namespace CB.WPF.NotificationIcon
 
         private void SetSoundPlaying(string soundSource)
         {
-            var mediaPlayer = CreateMediaPlayer(soundSource);
+            InitializeMediaPlayer(soundSource);
 
             RoutedEventHandler shownHandler = null;
             shownHandler = (sender, args) =>
             {
-                mediaPlayer.Play();
+                _mediaPlayer.Play();
                 TrayBalloonTipShown -= shownHandler;
             };
             TrayBalloonTipShown += shownHandler;
@@ -131,7 +134,7 @@ namespace CB.WPF.NotificationIcon
             RoutedEventHandler closedHandler = null;
             closedHandler = (sender, args) =>
             {
-                mediaPlayer.Close();
+                _mediaPlayer.Stop();
                 TrayBalloonTipClicked -= closedHandler;
                 TrayBalloonTipClosed -= closedHandler;
             };

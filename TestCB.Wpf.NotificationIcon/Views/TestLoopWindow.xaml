@@ -35,16 +35,16 @@
 
         <xaml:NotifyIcon x:Name="notifyIcon" />
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Title:" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Title:" Style="{StaticResource TextBlockStyle.RightAlign}"/>
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Message:" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Message:" Style="{StaticResource TextBlockStyle.RightAlign}"/>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Message}" />
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Symbol" />
-        <ComboBox Grid.Row="2" Grid.Column="1" xaml:SelectorServices.SelectedEnum="{Binding Symbol}" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Symbol:" Style="{StaticResource TextBlockStyle.RightAlign}"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" xaml:SelectorServices.SelectedEnum="{Binding Symbol, Mode=TwoWay}" />
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Sound source:" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Sound source:" Style="{StaticResource TextBlockStyle.RightAlign}" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SoundSource}" />
 
         <CheckBox Grid.Row="4" Grid.Column="0" Content="Loop?" IsChecked="{Binding Loop, Mode=TwoWay}" />
