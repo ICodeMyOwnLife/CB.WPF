@@ -129,13 +129,25 @@
         <KeyBinding Key="Right" Modifiers="Alt" Command="{Binding GoForwardAsyncCommand}" />
     </UIElement.InputBindings>
 
-    <xaml:FocusServices.FocusKeyMap>
-        <xaml:FocusKeyMap>
+    <!--<xaml:FocusServices.FocusKeyMap>
+        <xaml:FocusKeyMap CatchOnWindow="True">
             <xaml:FocusKey Key="L" Modifiers="Control" TargetName="txtPath" />
             <xaml:FocusKey Key="D" Modifiers="Alt" TargetName="txtPath" />
             <xaml:FocusKey Key="F6" TargetName="txtPath" />
         </xaml:FocusKeyMap>
-    </xaml:FocusServices.FocusKeyMap>
+    </xaml:FocusServices.FocusKeyMap>-->
+    
+    <i:Interaction.Behaviors>
+        <xaml:FocusBehavior>
+            <xaml:FocusBehavior.FocusKeyMap>
+                <xaml:FocusKeyMap>
+                    <xaml:FocusKey Key="L" Modifiers="Control" TargetName="txtPath" />
+                    <xaml:FocusKey Key="D" Modifiers="Alt" TargetName="txtPath" />
+                    <xaml:FocusKey Key="F6" TargetName="txtPath" />
+                </xaml:FocusKeyMap>
+            </xaml:FocusBehavior.FocusKeyMap>
+        </xaml:FocusBehavior>
+    </i:Interaction.Behaviors>
 
     <Grid>
         <Grid.RowDefinitions>
