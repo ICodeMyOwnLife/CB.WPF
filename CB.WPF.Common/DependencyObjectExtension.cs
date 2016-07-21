@@ -36,6 +36,9 @@ namespace CB.WPF.Common
 
             return null;
         }
+
+        public static Window GetWindow(this DependencyObject obj)
+            => obj as Window ?? Window.GetWindow(obj);
         #endregion
     }
 }

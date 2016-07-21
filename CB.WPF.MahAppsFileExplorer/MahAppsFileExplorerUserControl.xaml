@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="CB.WPF.MahAppsFileExplorer.MahAppsFileExplorerUserControl"
+             x:Name="main"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xaml="http://wpf.cb.com/xaml"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:prm="http://prismlibrary.com/"
+             xmlns:io="clr-namespace:CB.IO.Common;assembly=CB.IO.Common"
+             xmlns:hlp="clr-namespace:CB.WPF.MahAppsFileExplorer.Helpers"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance io:FileExplorerViewModelBase}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CB.WPF.Resources.MahApps;component/Styles.xaml" />
+                <ResourceDictionary Source="Resources/IconsNonShared.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <hlp:ListEntryDataTemplateSelector x:Key="ListTemplateSelector" />
+
+            <xaml:BehaviorList x:Key="DirectoryTreeBehaviors" x:Shared="False">
+                <xaml:RoutedEventToCommandBehavior RoutedEvent="TreeViewItem.Expanded"
+                                                   CommandPath="OriginalSource.DataContext.LoadDirectoriesAsyncCommand"
+                                                   FindCommandIn="EventArgs" />
+
+                <xaml:RoutedEventToCommandBehavior RoutedEvent="TreeViewItem.Selected"
+                                                   Command="{Binding ElementName=main, Path=DataContext.OpenDirectoryAsyncCommand}"
+                                                   TriggerParameterPath="OriginalSource.DataContext" />
+            </xaml:BehaviorList>
+
+            <xaml:TriggerList x:Key="ListItemTriggers" x:Shared="False">
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <prm:InvokeCommandAction
+                        Command="{Binding ElementName=main, Path=DataContext.OpenEntryAsyncCommand}"
+                        TriggerParameterPath="Source.DataContext" />
+                </i:EventTrigger>
+            </xaml:TriggerList>
+
+            <Style x:Key="IconStyle" TargetType="Rectangle">
+                <Setter Property="Fill" Value="{DynamicResource GrayBrush1}" />
+            </Style>
+
+            <Style x:Key="DirectoryIconStyle" TargetType="Rectangle" BasedOn="{StaticResource IconStyle}">
+                <Setter Property="OpacityMask">
+                    <Setter.Value>
+                        <VisualBrush Visual="{StaticResource appbar_folder}" Stretch="Uniform" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="FileIconStyle" TargetType="Rectangle" BasedOn="{StaticResource IconStyle}">
+                <Setter Property="OpacityMask">
+                    <Setter.Value>
+                        <VisualBrush Visual="{StaticResource appbar_page_text}" Stretch="Uniform" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TreeDirectoryIconStyle" TargetType="Rectangle" BasedOn="{StaticResource DirectoryIconStyle}">
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="Width" Value="16" />
+            </Style>
+
+            <Style x:Key="ListDirectoryIconStyle" TargetType="Rectangle" BasedOn="{StaticResource DirectoryIconStyle}">
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="Width" Value="16" />
+            </Style>
+
+            <Style x:Key="ListFileIconStyle" TargetType="Rectangle" BasedOn="{StaticResource FileIconStyle}">
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="Width" Value="16" />
+            </Style>
+
+            <Style x:Key="ItemPanelStyle" TargetType="StackPanel">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="ToolTip" Value="{Binding Name}" />
+            </Style>
+
+            <HierarchicalDataTemplate x:Key="TreeDirectoryTemplate" DataType="io:IDirectory"
+                                      ItemsSource="{Binding Directories}">
+                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                    <Rectangle Style="{StaticResource TreeDirectoryIconStyle}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
+                               Margin="4,4,8,4" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+            <DataTemplate x:Key="ListDirectoryTemplate" DataType="io:IDirectory">
+                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                    <Rectangle Style="{StaticResource ListDirectoryIconStyle}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
+                               Margin="4,4,8,4" />
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListFileTemplate" DataType="io:IFile">
+                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                    <Rectangle Style="{StaticResource ListFileIconStyle}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
+                               Margin="4,4,8,4" />
+                </StackPanel>
+            </DataTemplate>
+
+            <Style x:Key="EntryListItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource MetroListViewItem}">
+                <Setter Property="xaml:InteractionServices.Triggers" Value="{StaticResource ListItemTriggers}" />
+            </Style>
+
+            <Style x:Key="DirectoryTreeViewStyle" TargetType="TreeView"
+                   BasedOn="{StaticResource TreeViewStyle.Virtualized}">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="ItemsSource" Value="{Binding Roots}" />
+                <Setter Property="ItemTemplate" Value="{StaticResource TreeDirectoryTemplate}" />
+                <Setter Property="xaml:InteractionServices.Behaviors" Value="{StaticResource DirectoryTreeBehaviors}" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UIElement.InputBindings>
+        <KeyBinding Key="Back" Command="{Binding GoBackAsyncCommand}" />
+        <KeyBinding Key="Back" Modifiers="Shift" Command="{Binding GoForwardAsyncCommand}" />
+        <KeyBinding Key="Left" Modifiers="Alt" Command="{Binding GoBackAsyncCommand}" />
+        <KeyBinding Key="Right" Modifiers="Alt" Command="{Binding GoForwardAsyncCommand}" />
+    </UIElement.InputBindings>
+
+    <xaml:FocusServices.FocusKeyMap>
+        <xaml:FocusKeyMap>
+            <xaml:FocusKey Key="L" Modifiers="Control" TargetName="txtPath" />
+            <xaml:FocusKey Key="D" Modifiers="Alt" TargetName="txtPath" />
+            <xaml:FocusKey Key="F6" TargetName="txtPath" />
+        </xaml:FocusKeyMap>
+    </xaml:FocusServices.FocusKeyMap>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Style="{StaticResource AppThemeMenuItemStyle}" />
+            <MenuItem Style="{StaticResource AccentMenuItemStyle}" />
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" MinWidth="180" />
+                <ColumnDefinition MinWidth="180" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <Button Style="{StaticResource IconButtonStyle}"
+                        xaml:MahAppsContentControlServices.IconVisual="{StaticResource appbar_arrow_left}"
+                        Command="{Binding GoBackAsyncCommand}" />
+
+                <Button Style="{StaticResource IconButtonStyle}"
+                        xaml:MahAppsContentControlServices.IconVisual="{StaticResource appbar_arrow_right}"
+                        Command="{Binding GoForwardAsyncCommand}" />
+
+                <Button Style="{StaticResource IconButtonStyle}"
+                        xaml:MahAppsContentControlServices.IconVisual="{StaticResource appbar_arrow_up}"
+                        Command="{Binding GoUpAsyncCommand}" />
+
+                <TextBox x:Name="txtPath" Text="{Binding SelectedDirectory.Path}" />
+            </DockPanel>
+
+            <TreeView x:Name="treeView" Grid.Row="1" Grid.Column="0" Style="{StaticResource DirectoryTreeViewStyle}" />
+
+            <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Entries}"
+                      SelectedItem="{Binding SelectedEntry}"
+                      ItemTemplateSelector="{StaticResource ListTemplateSelector}"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      ItemContainerStyle="{StaticResource EntryListItemStyle}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <UIElement.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding OpenEntryAsyncCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListView}, Path=SelectedItem}" />
+                </UIElement.InputBindings>
+            </ListView>
+
+            <GridSplitter Grid.Row="1" Grid.Column="1" Style="{StaticResource GridSplitterStyle.Vertical}" />
+        </Grid>
+
+        <StatusBar Grid.Row="2">
+            <TextBlock Style="{StaticResource TextBlockStyle.LeftAlign}" Text="{Binding SelectedEntry.Path}" />
+        </StatusBar>
+    </Grid>
+</UserControl>
