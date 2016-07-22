@@ -4,8 +4,10 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Resources/IconsNonShared.xaml" />
-        <ResourceDictionary Source="Shared.xaml" />
-        <ResourceDictionary Source="MahAppsFileSystemEntryControl.xaml" />
+        <ResourceDictionary
+            Source="/CB.WPF.MahAppsFileExplorerControls;component/Themes/Shared.xaml" />
+        <ResourceDictionary
+            Source="/CB.WPF.MahAppsFileExplorerControls;component/Themes/MahAppsFileSystemEntryControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
