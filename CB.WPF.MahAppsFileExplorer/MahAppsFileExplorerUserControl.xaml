@@ -9,6 +9,7 @@
              xmlns:prm="http://prismlibrary.com/"
              xmlns:io="clr-namespace:CB.IO.Common;assembly=CB.IO.Common"
              xmlns:hlp="clr-namespace:CB.WPF.MahAppsFileExplorer.Helpers"
+             xmlns:fec="clr-namespace:CB.WPF.MahAppsFileExplorerControls;assembly=CB.WPF.MahAppsFileExplorerControls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance io:FileExplorerViewModelBase}">
 
@@ -85,27 +86,30 @@
 
             <HierarchicalDataTemplate x:Key="TreeDirectoryTemplate" DataType="io:IDirectory"
                                       ItemsSource="{Binding Directories}">
-                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                <!--<StackPanel Style="{StaticResource ItemPanelStyle}">
                     <Rectangle Style="{StaticResource TreeDirectoryIconStyle}" />
                     <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
                                Margin="4,4,8,4" />
-                </StackPanel>
+                </StackPanel>-->
+                <fec:MahAppsFolderControl />
             </HierarchicalDataTemplate>
 
             <DataTemplate x:Key="ListDirectoryTemplate" DataType="io:IDirectory">
-                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                <!--<StackPanel Style="{StaticResource ItemPanelStyle}">
                     <Rectangle Style="{StaticResource ListDirectoryIconStyle}" />
                     <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
                                Margin="4,4,8,4" />
-                </StackPanel>
+                </StackPanel>-->
+                <fec:MahAppsFolderControl />
             </DataTemplate>
 
             <DataTemplate x:Key="ListFileTemplate" DataType="io:IFile">
-                <StackPanel Style="{StaticResource ItemPanelStyle}">
+                <!--<StackPanel Style="{StaticResource ItemPanelStyle}">
                     <Rectangle Style="{StaticResource ListFileIconStyle}" />
                     <TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockStyle.LeftAlign}"
                                Margin="4,4,8,4" />
-                </StackPanel>
+                </StackPanel>-->
+                <fec:MahAppsFileControl />
             </DataTemplate>
 
             <Style x:Key="EntryListItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource MetroListViewItem}">

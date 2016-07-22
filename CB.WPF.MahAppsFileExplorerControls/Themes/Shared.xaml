@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Viewbox x:Key="MahAppsFolderIcon">
+        <DynamicResource ResourceKey="appbar_folder" />
+    </Viewbox>
+
+    <Viewbox x:Key="MahAppsFileIcon">
+        <DynamicResource ResourceKey="appbar_page_text" />
+    </Viewbox>
+
+</ResourceDictionary>

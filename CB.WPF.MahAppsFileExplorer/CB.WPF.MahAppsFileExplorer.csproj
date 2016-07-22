@@ -147,6 +147,10 @@
       <Project>{29bf73a0-6a4d-484b-83aa-5e5e13473a5a}</Project>
       <Name>CB.WPF.MahAppsExtension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.MahAppsFileExplorerControls\CB.WPF.MahAppsFileExplorerControls.csproj">
+      <Project>{58bcdf5e-4355-46df-90c5-4dbb08ffd555}</Project>
+      <Name>CB.WPF.MahAppsFileExplorerControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.WPF.Resources.MahApps\CB.WPF.Resources.MahApps.csproj">
       <Project>{88845a0d-9b1f-4d1a-92d3-0c8d97e4d747}</Project>
       <Name>CB.WPF.Resources.MahApps</Name>

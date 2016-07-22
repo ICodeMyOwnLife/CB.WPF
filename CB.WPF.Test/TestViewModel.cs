@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using CB.Model.Prism;
+using MahApps.Metro.Controls;
 using Microsoft.Practices.Prism.Commands;
 
 
@@ -67,7 +68,10 @@ namespace CB_WPF_Test
 
         #region Implementation
         private static Window CreateWindow(Type windowType)
-            => Activator.CreateInstance(windowType) as Window;
+        {
+            var window = Activator.CreateInstance(windowType);
+            return window as MetroWindow ?? window as Window;
+        }
         #endregion
     }
 }

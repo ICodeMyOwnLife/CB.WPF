@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:CB.WPF.MahAppsFileExplorerControls"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:io="clr-namespace:CB.IO.Common;assembly=CB.IO.Common"
+                    mc:Ignorable="d">
+
+    <ControlTemplate x:Key="MahAppsFolderControlTemplate" TargetType="ctl:MahAppsFolderControl">
+        <Grid d:DataContext="{d:DesignInstance io:IFileSystemEntry}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <DynamicResource ResourceKey="MahAppsFolderIcon" />
+
+            <TextBox x:Name="PART_txtName" Grid.Column="1" />
+
+            <TextBlock Grid.Column="1" Text="{Binding Name}" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MahAppsFileControlTemplate" TargetType="ctl:MahAppsFolderControl">
+        <Grid d:DataContext="{d:DesignInstance io:IFileSystemEntry}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <DynamicResource ResourceKey="MahAppsFileIcon" />
+
+            <TextBox x:Name="PART_txtName" Grid.Column="1" />
+
+            <TextBlock Grid.Column="1" Text="{Binding Name}" />
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="ctl:MahAppsFolderControl">
+        <Setter Property="Template" Value="{DynamicResource MahAppsFolderControlTemplate}" />
+    </Style>
+
+    <Style TargetType="ctl:MahAppsFileControl">
+        <Setter Property="Template" Value="{DynamicResource MahAppsFileControlTemplate}" />
+    </Style>
+</ResourceDictionary>

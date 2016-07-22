@@ -93,11 +93,11 @@
                 <DataGridTemplateColumn Header="Window Type" Width="*" SortMemberPath="Name"
                                         CellTemplate="{StaticResource WindowNameColumn}" />
 
-                <DataGridTemplateColumn Header="Command" Width="SizeToCells"
+                <DataGridTemplateColumn Header="Command" Width="100"
                                         HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowWindowButtonColumn}" />
 
-                <DataGridTemplateColumn Header="Command" Width="SizeToCells"
+                <DataGridTemplateColumn Header="Command" Width="140"
                                         HeaderStyle="{StaticResource HeaderStyle.Center}"
                                         CellTemplate="{StaticResource ShowDialogWindowButtonColumn}" />
             </DataGrid.Columns>
