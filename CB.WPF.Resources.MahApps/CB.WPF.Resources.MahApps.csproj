@@ -36,9 +36,6 @@
     </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CB.WPF.MahAppsExtension">
-      <HintPath>..\CB.WPF.MahAppsExtension\bin\Debug\CB.WPF.MahAppsExtension.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro, Version=1.3.0.186, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Node\Applications\JobsService\packages\MahApps.Metro.1.3.0-ALPHA186\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -284,12 +281,19 @@
       <Project>{0c28cc8c-9e4d-4113-bfb2-0119f2a25d7e}</Project>
       <Name>CB.Xaml.Interactivity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.Common\CB.WPF.Common.csproj">
+      <Project>{a9505db9-6b23-4a98-b20a-85b66bb799c4}</Project>
+      <Name>CB.WPF.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CB.Wpf.Controls\CB.Wpf.Controls.csproj">
       <Project>{40ddc946-cd13-4734-990f-fbff6914652e}</Project>
       <Name>CB.Wpf.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CB.WPF.MahAppsExtension\CB.WPF.MahAppsExtension.csproj">
+      <Project>{29bf73a0-6a4d-484b-83aa-5e5e13473a5a}</Project>
+      <Name>CB.WPF.MahAppsExtension</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
