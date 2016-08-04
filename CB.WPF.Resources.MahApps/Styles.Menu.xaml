@@ -4,6 +4,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:mae="clr-namespace:CB.WPF.MahAppsExtension;assembly=CB.WPF.MahAppsExtension"
                     xmlns:xaml="http://wpf.cb.com/xaml"
+                    xmlns:loc="clr-namespace:CB.Model.Localization;assembly=CB.Model.Localization"
                     mc:Ignorable="d">
 
     <!--#region Embedded Resources-->
@@ -59,34 +60,38 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style TargetType="Menu" BasedOn="{StaticResource MenuStyle}">
-        <Setter Property="Background" Value="{x:Null}" />
-    </Style>
+    <Style TargetType="Menu" BasedOn="{StaticResource MenuStyle}" />
 
     <Style x:Key="MenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
-        <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="MaxHeight" Value="32" />
     </Style>
 
     <Style TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}" />
 
-    <Style x:Key="MahAppsThemeChildMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+    <Style x:Key="CheckableAppliableChildMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
         <Setter Property="Command" Value="{Binding ApplyCommand}" />
         <Setter Property="IsCheckable" Value="True" />
     </Style>
 
     <Style x:Key="AccentChildMenuItemStyle" TargetType="MenuItem"
-           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
+           BasedOn="{StaticResource CheckableAppliableChildMenuItemStyle}">
         <Setter Property="Header" Value="{StaticResource AccentChildMenuItemHeader}" />
         <Setter Property="IsChecked" Value="{Binding Converter={StaticResource ChosenAccentConverter}, Mode=OneTime}" />
         <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__accent" />
     </Style>
 
     <Style x:Key="AppThemeChildMenuItemStyle" TargetType="MenuItem"
-           BasedOn="{StaticResource MahAppsThemeChildMenuItemStyle}">
+           BasedOn="{StaticResource CheckableAppliableChildMenuItemStyle}">
         <Setter Property="Header" Value="{StaticResource AppThemeChildMenuItemHeader}" />
         <Setter Property="IsChecked" Value="{Binding Converter={StaticResource ChosenAppThemeConverter}, Mode=OneTime}" />
         <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__appTheme" />
+    </Style>
+
+    <Style x:Key="LanguageChildMenuItemStyle" TargetType="MenuItem"
+           BasedOn="{StaticResource CheckableAppliableChildMenuItemStyle}">
+        <Setter Property="Header" Value="{Binding (loc:LocalCulture.Name)}" />
+        <!--<Setter Property="IsChecked" Value="{Binding Converter={StaticResource ChosenAppThemeConverter}, Mode=OneTime}" />-->
+        <Setter Property="xaml:ToggleButtonServices.GroupName" Value="__language" />
     </Style>
 
     <Style x:Key="AppThemeMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
@@ -99,6 +104,12 @@
         <Setter Property="Header" Value="_Accent" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource AccentChildMenuItemStyle}" />
         <Setter Property="ItemsSource" Value="{x:Static mae:MahAppsThemeManager.Accents}" />
+    </Style>
+
+    <Style x:Key="LanguageMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+        <Setter Property="Header" Value="_Language" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource LanguageChildMenuItemStyle}" />
+        <Setter Property="ItemsSource" Value="{x:Static loc:LocalCulture.Cultures}" />
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

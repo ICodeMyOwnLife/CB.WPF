@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CB.Configuration\CB.Configuration.Common\CB.Configuration.Common.csproj">
-      <Project>{9F2166AE-F09B-49C1-9B6D-2EE861593A73}</Project>
+      <Project>{9f2166ae-f09b-49c1-9b6d-2ee861593a73}</Project>
       <Name>CB.Configuration.Common</Name>
     </ProjectReference>
   </ItemGroup>
