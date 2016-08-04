@@ -53,6 +53,16 @@
            BasedOn="{StaticResource DataGridColumnHeaderStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
     </Style>
+
+    <Style x:Key="DataGridColumnHeaderStyle.LeftAlign" TargetType="DataGridColumnHeader"
+           BasedOn="{StaticResource DataGridColumnHeaderStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+
+    <Style x:Key="DataGridColumnHeaderStyle.RightAlign" TargetType="DataGridColumnHeader"
+           BasedOn="{StaticResource DataGridColumnHeaderStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+    </Style>
     <!--#endregion-->
 
 
